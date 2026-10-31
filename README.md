@@ -32,9 +32,9 @@ Single-item voucher series for weekly egg and seasonal fruit distribution:
 
 | Month | Invoice No. | Date | Quantity | Unit | Rate | Total Amount |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: |
-| **July 2026** | `2026-27 / EF-01` | 31 July 2026 | 955 | PCS | ₹5.00 | **₹4,775.00** |
-| **August 2026** | `2026-27 / EF-02` | 31 August 2026 | 575 | PCS | ₹5.00 | **₹2,875.00** |
-| **September 2026** | `2026-27 / EF-03` | 30 September 2026 | 352 | PCS | ₹5.00 | **₹1,760.00** |
+| **July 2026** | `2026-27 / ` | 31 July 2026 | 955 | PCS | ₹5.00 | **₹4,775.00** |
+| **August 2026** | `2026-27 / ` | 31 August 2026 | 575 | PCS | ₹5.00 | **₹2,875.00** |
+| **September 2026** | `2026-27 / ` | 30 September 2026 | 352 | PCS | ₹5.00 | **₹1,760.00** |
 
 - **PDF Output**: `Yellow_Vouchers_Egg_Fruit_3_Months.pdf` (3-page A4 PDF)
 - **HTML Source**: `Yellow_Voucher_Egg_Fruit_3_Months.html`

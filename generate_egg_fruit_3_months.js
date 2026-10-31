@@ -4,7 +4,7 @@ const monthsData = [
   {
     monthTitle: 'July 2026',
     dateStr: '31 July 2026',
-    invNo: '2026-27 / EF-01',
+    invNo: '2026-27 / ',
     refStr: '2-Jul-26',
     grandTotal: '4,775.00',
     words: 'INR FOUR THOUSAND SEVEN HUNDRED AND SEVENTY FIVE ONLY',
@@ -15,7 +15,7 @@ const monthsData = [
   {
     monthTitle: 'August 2026',
     dateStr: '31 August 2026',
-    invNo: '2026-27 / EF-02',
+    invNo: '2026-27 / ',
     refStr: '1-Aug-26',
     grandTotal: '2,875.00',
     words: 'INR TWO THOUSAND EIGHT HUNDRED AND SEVENTY FIVE ONLY',
@@ -26,7 +26,7 @@ const monthsData = [
   {
     monthTitle: 'September 2026',
     dateStr: '30 September 2026',
-    invNo: '2026-27 / EF-03',
+    invNo: '2026-27 / ',
     refStr: '1-Sep-26',
     grandTotal: '1,760.00',
     words: 'INR ONE THOUSAND SEVEN HUNDRED AND SIXTY ONLY',
