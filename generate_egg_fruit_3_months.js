@@ -157,7 +157,7 @@ function generateHTML(pages) {
           <tr class="item-row">
             <td class="col-sr">${it.sr}</td>
             <td class="col-desc" style="font-weight: 600; font-size: 9.5pt;">${it.name}</td>
-            <td class="col-hsn">0407 / 08</td>
+            <td class="col-hsn"></td>
             <td class="col-qty">${it.qty}</td>
             <td class="col-unit">${it.unit}</td>
             <td class="col-rate">${it.rate}</td>
@@ -201,22 +201,22 @@ function generateHTML(pages) {
               </thead>
               <tbody>
                 <tr>
-                  <td style="font-size: 7.5pt; text-align: left; padding-left: 4px;">0407 / 08 (Exempt)</td>
-                  <td>${p.grandTotal}</td>
-                  <td>Nil</td>
-                  <td>0.00</td>
-                  <td>Nil</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
+                  <td style="font-size: 7.5pt; text-align: left; padding-left: 4px;">Various</td>
+                  <td></td>
+                  <td>-</td>
+                  <td></td>
+                  <td>-</td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr style="font-weight: bold;">
                   <td style="text-align: right; padding-right: 4px;">Total Tax</td>
-                  <td>${p.grandTotal}</td>
+                  <td></td>
                   <td>-</td>
-                  <td>0.00</td>
+                  <td></td>
                   <td>-</td>
-                  <td>0.00</td>
-                  <td>0.00</td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -499,3 +499,4 @@ ${pagesHtml}
 const fullHtml = generateHTML(monthsData);
 fs.writeFileSync('C:/Users/rajka/OneDrive/Desktop/general/Yellow_Voucher_Egg_Fruit_3_Months.html', fullHtml);
 console.log('Successfully generated 3-month Egg/Fruit HTML template in general!');
+
