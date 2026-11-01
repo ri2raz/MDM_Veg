@@ -27,7 +27,7 @@ This repository contains the templates, generator scripts, and generated PDF inv
 
 ## 📦 Generated Invoices Summary
 
-### 1. Egg & Fruit Invoices (अंडा / फल सामग्री क्रय) - 3 Months
+### 1. Egg & Fruit Invoices (अंडा / फल सामग्री क्रय)
 Single-item voucher series for weekly egg and seasonal fruit distribution:
 
 | Month | Invoice No. | Date | Quantity | Unit | Rate | Total Amount |
@@ -35,14 +35,11 @@ Single-item voucher series for weekly egg and seasonal fruit distribution:
 | **July 2026** | `2026-27 / ` | 31 July 2026 | 955 | PCS | ₹5.00 | **₹4,775.00** |
 | **August 2026** | `2026-27 / ` | 31 August 2026 | 575 | PCS | ₹5.00 | **₹2,875.00** |
 | **September 2026** | `2026-27 / ` | 30 September 2026 | 352 | PCS | ₹5.00 | **₹1,760.00** |
-
-- **PDF Output**: `Yellow_Vouchers_Egg_Fruit_3_Months.pdf` (3-page A4 PDF)
-- **HTML Source**: `Yellow_Voucher_Egg_Fruit_3_Months.html`
-- **Generator Script**: `generate_egg_fruit_3_months.js`
+| **October 2026** | `2026-27 / ` | 31 October 2026 | 602 | PCS | ₹5.00 | **₹3,010.00** |
 
 ---
 
-### 2. General Grocery, Vegetable & Fuel Invoices (सामग्री एवं जलावन क्रय) - 4 Months
+### 2. General Grocery, Vegetable & Fuel Invoices (सामग्री एवं जलावन क्रय)
 Full grocery, spice, vegetable, oil, and firewood bill book series:
 
 | Month | Invoice No. | Date | Net Payable |
@@ -51,10 +48,16 @@ Full grocery, spice, vegetable, oil, and firewood bill book series:
 | **July 2026** | `2026-27 / 02` | 31 July 2026 | **₹44,669.00** |
 | **August 2026** | `2026-27 / 03` | 31 August 2026 | **₹33,465.00** |
 | **September 2026** | `2026-27 / 04` | 30 September 2026 | **₹35,404.00** |
+| **October 2026** | `2026-27 / ` | 31 October 2026 | **₹29,096.00** |
 
-- **PDF Output**: `Yellow_Vouchers_4_Months.pdf` (4-page A4 PDF)
-- **HTML Source**: `Yellow_Voucher_4_Months.html`
-- **Generator Script**: `generate_4_months.js`
+---
+
+### 3. October 2026 Combined 2-Page Voucher Package
+- **PDF Output**: `Yellow_Vouchers_October_2026.pdf` (2-page A4 PDF)
+  - **Page 1**: October Grocery & Fuel Tax Invoice (₹29,096.00)
+  - **Page 2**: October Egg & Fruit Tax Invoice (602 eggs @ ₹5 = ₹3,010.00)
+- **HTML Source**: `Yellow_Vouchers_October_2026.html`
+- **Generator Script**: `generate_october_2_page_voucher.js`
 
 ---
 
