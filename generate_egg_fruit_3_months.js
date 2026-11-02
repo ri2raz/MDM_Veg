@@ -33,6 +33,17 @@ const monthsData = [
     items: [
       { sr: 1, name: 'अंडा / फल (Egg / Fruit)', qty: '352', unit: 'PCS', rate: '5.00', tot: '1,760.00' }
     ]
+  },
+  {
+    monthTitle: 'October 2026',
+    dateStr: '31 October 2026',
+    invNo: '2026-27 / ',
+    refStr: '1-Oct-26',
+    grandTotal: '3,010.00',
+    words: 'INR THREE THOUSAND AND TEN ONLY',
+    items: [
+      { sr: 1, name: 'अंडा / फल (Egg / Fruit)', qty: '602', unit: 'PCS', rate: '5.00', tot: '3,010.00' }
+    ]
   }
 ];
 

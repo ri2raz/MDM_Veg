@@ -5,8 +5,8 @@ const page1Data = {
   dateStr: '31 October 2026',
   invNo: '2026-27 / ',
   refStr: '1-Oct-26',
-  grandTotal: '29,096.58',
-  words: 'INR TWENTY NINE THOUSAND NINETY SIX AND PAISE FIFTY EIGHT ONLY',
+  grandTotal: '29,096.00',
+  words: 'INR TWENTY NINE THOUSAND NINETY SIX ONLY',
   schemePurpose: 'Cooking Cost & Fuel Material Purchase',
   items: [
     { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '3.533', unit: 'KG', rate: '250.00', tot: '883.25' },

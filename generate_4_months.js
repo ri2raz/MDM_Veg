@@ -116,6 +116,35 @@ const monthsData = [
       { sr: 18, name: 'नमक (Salt)', qty: '5.961', unit: 'KG', rate: '15.00', tot: '89.42' },
       { sr: 19, name: 'जलावन (Firewood / Fuel)', qty: '567.214', unit: 'KG', rate: '14.00', tot: '7941.00' }
     ]
+  },
+  {
+    monthTitle: 'October 2026',
+    dateStr: '31 October 2026',
+    invNo: '2026-27 / 05',
+    refStr: '1-Oct-26',
+    grandTotal: '29,096.00',
+    words: 'INR TWENTY NINE THOUSAND NINETY SIX ONLY',
+    items: [
+      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '3.533', unit: 'KG', rate: '250.00', tot: '883.25' },
+      { sr: 2, name: 'धनिया पाउडर (Coriander Powder)', qty: '2.120', unit: 'KG', rate: '175.00', tot: '371.00' },
+      { sr: 3, name: 'मिक्स मसाला (Mix Masala)', qty: '1.413', unit: 'KG', rate: '340.00', tot: '480.42' },
+      { sr: 4, name: 'लाल मिर्च पाउडर (Red Chili Powder)', qty: '0.706', unit: 'KG', rate: '300.00', tot: '211.80' },
+      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '20.759', unit: 'Lit', rate: '190.00', tot: '3944.21' },
+      { sr: 6, name: 'सोया बड़ी (Soya Chunks)', qty: '21.125', unit: 'KG', rate: '92.00', tot: '1943.50' },
+      { sr: 7, name: 'चना दाल (Chana Dal)', qty: '14.490', unit: 'KG', rate: '100.00', tot: '1449.00' },
+      { sr: 8, name: 'मूंग दाल (Moong Dal)', qty: '14.490', unit: 'KG', rate: '100.00', tot: '1449.00' },
+      { sr: 9, name: 'मसूर दाल (Masoor Dal)', qty: '14.490', unit: 'KG', rate: '100.00', tot: '1449.00' },
+      { sr: 10, name: 'लाल चना (Red Chana)', qty: '57.821', unit: 'KG', rate: '90.00', tot: '5203.89' },
+      { sr: 11, name: 'आलू (Potato)', qty: '60.873', unit: 'KG', rate: '30.00', tot: '1826.19' },
+      { sr: 12, name: 'प्याज (Onion)', qty: '18.760', unit: 'KG', rate: '39.00', tot: '731.64' },
+      { sr: 13, name: 'कद्दू (Pumpkin)', qty: '18.760', unit: 'KG', rate: '39.00', tot: '731.64' },
+      { sr: 14, name: 'झिंगा / नेनुआ (Vegetables)', qty: '18.760', unit: 'KG', rate: '39.00', tot: '731.64' },
+      { sr: 15, name: 'टमाटर (Tomato)', qty: '18.759', unit: 'KG', rate: '39.00', tot: '731.60' },
+      { sr: 16, name: 'सूखी मिर्च (Dry Chilli)', qty: '0.706', unit: 'KG', rate: '250.00', tot: '176.50' },
+      { sr: 17, name: 'जीरा (Cumin)', qty: '0.707', unit: 'KG', rate: '490.00', tot: '346.43' },
+      { sr: 18, name: 'नमक (Salt)', qty: '4.943', unit: 'KG', rate: '15.00', tot: '74.14' },
+      { sr: 19, name: 'जलावन (Firewood / Fuel)', qty: '454.409', unit: 'KG', rate: '14.00', tot: '6361.73' }
+    ]
   }
 ];
 
