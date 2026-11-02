@@ -9,11 +9,11 @@ const monthsData = [
     grandTotal: '5,148.00',
     words: 'INR FIVE THOUSAND ONE HUNDRED AND FORTY EIGHT ONLY',
     items: [
-      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '0.596', unit: 'KG', rate: '249.28', tot: '148.57' },
+      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '0.596', unit: 'KG', rate: '249.00', tot: '148.40' },
       { sr: 2, name: 'धनिया पाउडर (Coriander Powder)', qty: '0.357', unit: 'KG', rate: '190.00', tot: '67.83' },
       { sr: 3, name: 'मिक्स मसाला (Mix Masala)', qty: '0.238', unit: 'KG', rate: '340.00', tot: '80.92' },
       { sr: 4, name: 'लाल मिर्च पाउडर (Red Chili Powder)', qty: '0.119', unit: 'KG', rate: '300.00', tot: '35.70' },
-      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '3.750', unit: 'Lit', rate: '190.93', tot: '716.00' },
+      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '3.750', unit: 'Lit', rate: '191.00', tot: '716.25' },
       { sr: 6, name: 'सोया बड़ी (Soya Chunks)', qty: '5.000', unit: 'KG', rate: '92.00', tot: '460.00' },
       { sr: 7, name: 'चना दाल (Chana Dal)', qty: '2.453', unit: 'KG', rate: '100.00', tot: '245.30' },
       { sr: 8, name: 'मूंग दाल (Moong Dal)', qty: '2.453', unit: 'KG', rate: '100.00', tot: '245.30' },
@@ -27,7 +27,7 @@ const monthsData = [
       { sr: 16, name: 'सूखी मिर्च (Dry Chilli)', qty: '0.119', unit: 'KG', rate: '250.00', tot: '29.75' },
       { sr: 17, name: 'जीरा (Cumin)', qty: '0.119', unit: 'KG', rate: '485.00', tot: '57.72' },
       { sr: 18, name: 'नमक (Salt)', qty: '0.834', unit: 'KG', rate: '15.00', tot: '12.51' },
-      { sr: 19, name: 'जलावन (Firewood / Fuel)', qty: '86.620', unit: 'KG', rate: '13.99', tot: '1212.00' }
+      { sr: 19, name: 'जलावन (Firewood / Fuel)', qty: '86.620', unit: 'KG', rate: '14.00', tot: '1212.68' }
     ]
   },
   {
@@ -38,11 +38,11 @@ const monthsData = [
     grandTotal: '44,669.00',
     words: 'INR FORTY FOUR THOUSAND SIX HUNDRED AND SIXTY NINE ONLY',
     items: [
-      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '5.434', unit: 'KG', rate: '248.93', tot: '1352.69' },
+      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '5.434', unit: 'KG', rate: '249.00', tot: '1353.07' },
       { sr: 2, name: 'धनिया पाउडर (Coriander Powder)', qty: '3.260', unit: 'KG', rate: '185.00', tot: '603.10' },
       { sr: 3, name: 'मिक्स मसाला (Mix Masala)', qty: '2.173', unit: 'KG', rate: '340.00', tot: '738.82' },
       { sr: 4, name: 'लाल मिर्च पाउडर (Red Chili Powder)', qty: '1.087', unit: 'KG', rate: '295.00', tot: '320.66' },
-      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '31.867', unit: 'Lit', rate: '190.01', tot: '6055.00' },
+      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '31.867', unit: 'Lit', rate: '190.00', tot: '6054.73' },
       { sr: 6, name: 'सोया बड़ी (Soya Chunks)', qty: '34.000', unit: 'KG', rate: '92.00', tot: '3128.00' },
       { sr: 7, name: 'चना दाल (Chana Dal)', qty: '20.473', unit: 'KG', rate: '100.00', tot: '2047.30' },
       { sr: 8, name: 'मूंग दाल (Moong Dal)', qty: '20.473', unit: 'KG', rate: '100.00', tot: '2047.30' },
@@ -67,11 +67,11 @@ const monthsData = [
     grandTotal: '33,465.00',
     words: 'INR THIRTY THREE THOUSAND FOUR HUNDRED AND SIXTY FIVE ONLY',
     items: [
-      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '4.093', unit: 'KG', rate: '248.92', tot: '1018.83' },
+      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '4.093', unit: 'KG', rate: '249.00', tot: '1019.16' },
       { sr: 2, name: 'धनिया पाउडर (Coriander Powder)', qty: '2.456', unit: 'KG', rate: '190.00', tot: '466.64' },
       { sr: 3, name: 'मिक्स मसाला (Mix Masala)', qty: '1.637', unit: 'KG', rate: '340.00', tot: '556.58' },
       { sr: 4, name: 'लाल मिर्च पाउडर (Red Chili Powder)', qty: '0.819', unit: 'KG', rate: '285.00', tot: '233.42' },
-      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '23.890', unit: 'Lit', rate: '190.04', tot: '4540.00' },
+      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '23.890', unit: 'Lit', rate: '190.00', tot: '4539.10' },
       { sr: 6, name: 'सोया बड़ी (Soya Chunks)', qty: '25.000', unit: 'KG', rate: '92.00', tot: '2300.00' },
       { sr: 7, name: 'चना दाल (Chana Dal)', qty: '18.123', unit: 'KG', rate: '100.00', tot: '1812.30' },
       { sr: 8, name: 'मूंग दाल (Moong Dal)', qty: '18.123', unit: 'KG', rate: '100.00', tot: '1812.30' },
@@ -96,11 +96,11 @@ const monthsData = [
     grandTotal: '35,404.00',
     words: 'INR THIRTY FIVE THOUSAND FOUR HUNDRED AND FOUR ONLY',
     items: [
-      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '4.259', unit: 'KG', rate: '250.06', tot: '1065.01' },
+      { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '4.259', unit: 'KG', rate: '250.00', tot: '1064.75' },
       { sr: 2, name: 'धनिया पाउडर (Coriander Powder)', qty: '2.555', unit: 'KG', rate: '175.00', tot: '447.13' },
       { sr: 3, name: 'मिक्स मसाला (Mix Masala)', qty: '1.704', unit: 'KG', rate: '340.00', tot: '579.36' },
       { sr: 4, name: 'लाल मिर्च पाउडर (Red Chili Powder)', qty: '0.852', unit: 'KG', rate: '300.00', tot: '255.60' },
-      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '25.471', unit: 'Lit', rate: '189.98', tot: '4839.00' },
+      { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '25.471', unit: 'Lit', rate: '190.00', tot: '4839.49' },
       { sr: 6, name: 'सोया बड़ी (Soya Chunks)', qty: '27.000', unit: 'KG', rate: '92.00', tot: '2484.00' },
       { sr: 7, name: 'चना दाल (Chana Dal)', qty: '16.063', unit: 'KG', rate: '100.00', tot: '1606.30' },
       { sr: 8, name: 'मूंग दाल (Moong Dal)', qty: '16.063', unit: 'KG', rate: '100.00', tot: '1606.30' },

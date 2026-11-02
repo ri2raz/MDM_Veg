@@ -5,15 +5,15 @@ const page1Data = {
   dateStr: '31 October 2026',
   invNo: '2026-27 / ',
   refStr: '1-Oct-26',
-  grandTotal: '29,096.00',
-  words: 'INR TWENTY NINE THOUSAND NINETY SIX ONLY',
+  grandTotal: '29,096.58',
+  words: 'INR TWENTY NINE THOUSAND NINETY SIX AND PAISE FIFTY EIGHT ONLY',
   schemePurpose: 'Cooking Cost & Fuel Material Purchase',
   items: [
-    { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '3.533', unit: 'KG', rate: '250.06', tot: '883.46' },
+    { sr: 1, name: 'हल्दी पाउडर (Haldi Powder)', qty: '3.533', unit: 'KG', rate: '250.00', tot: '883.25' },
     { sr: 2, name: 'धनिया पाउडर (Coriander Powder)', qty: '2.120', unit: 'KG', rate: '175.00', tot: '371.00' },
     { sr: 3, name: 'मिक्स मसाला (Mix Masala)', qty: '1.413', unit: 'KG', rate: '340.00', tot: '480.42' },
     { sr: 4, name: 'लाल मिर्च पाउडर (Red Chili Powder)', qty: '0.706', unit: 'KG', rate: '300.00', tot: '211.80' },
-    { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '20.759', unit: 'Lit', rate: '189.98', tot: '3943.79' },
+    { sr: 5, name: 'सरसों तेल (Mustard Oil)', qty: '20.759', unit: 'Lit', rate: '190.00', tot: '3944.21' },
     { sr: 6, name: 'सोया बड़ी (Soya Chunks)', qty: '21.125', unit: 'KG', rate: '92.00', tot: '1943.50' },
     { sr: 7, name: 'चना दाल (Chana Dal)', qty: '14.490', unit: 'KG', rate: '100.00', tot: '1449.00' },
     { sr: 8, name: 'मूंग दाल (Moong Dal)', qty: '14.490', unit: 'KG', rate: '100.00', tot: '1449.00' },
@@ -534,3 +534,4 @@ ${page2}
 const htmlContent = generateHTML();
 fs.writeFileSync('C:/Users/rajka/OneDrive/Desktop/general/Yellow_Vouchers_October_2026.html', htmlContent);
 console.log('Successfully generated October 2026 2-page voucher HTML!');
+
