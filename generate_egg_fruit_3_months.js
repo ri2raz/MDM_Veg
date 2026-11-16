@@ -28,10 +28,10 @@ const monthsData = [
     dateStr: '30 September 2026',
     invNo: '2026-27 / ',
     refStr: '1-Sep-26',
-    grandTotal: '1,760.00',
-    words: 'INR ONE THOUSAND SEVEN HUNDRED AND SIXTY ONLY',
+    grandTotal: '1,635.00',
+    words: 'INR ONE THOUSAND SIX HUNDRED AND THIRTY FIVE ONLY',
     items: [
-      { sr: 1, name: 'अंडा / फल (Egg / Fruit)', qty: '352', unit: 'PCS', rate: '5.00', tot: '1,760.00' }
+      { sr: 1, name: 'अंडा / फल (Egg / Fruit)', qty: '327', unit: 'PCS', rate: '5.00', tot: '1,635.00' }
     ]
   },
   {

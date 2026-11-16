@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yellow Vouchers - September 2026</title>
+<style>
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFF085;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+  }
+  
+  .page-container {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 7mm 8mm 7mm 8mm;
+    margin: 0 auto;
+    background-color: #FFF085;
+    page-break-after: always;
+  }
+  .page-container:last-child {
+    page-break-after: avoid;
+  }
+  
+  .voucher-container {
+    border: 1.5px solid #000;
+    width: 100%;
+    background-color: #FFF085;
+  }
+  
+  .top-table, .sub-header-table, .bottom-blocks-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .top-table td, .sub-header-table td, .bottom-blocks-table td {
+    vertical-align: top;
+    padding: 4px 6px;
+  }
+  
+  .store-title {
+    font-size: 15pt;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    margin: 2px 0;
+  }
+  
+  .store-details {
+    font-size: 8.5pt;
+    line-height: 1.35;
+  }
+  
+  .invoice-box-title {
+    font-size: 10pt;
+    font-weight: 900;
+    text-align: center;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 3px;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+  }
+  
+  .sub-header-table {
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+  }
+  
+  .sub-header-title {
+    font-size: 8.5pt;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 3px;
+  }
+  
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .items-table th, .items-table td {
+    border: 1px solid #000;
+    padding: 2.2px 3px;
+    font-size: 8.2pt;
+    line-height: 1.15;
+  }
+  
+  .items-table th {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  
+  .col-sr { width: 4%; text-align: center; }
+  .col-desc { width: 33%; text-align: left; }
+  .col-hsn { width: 7%; text-align: center; }
+  .col-qty { width: 9%; text-align: right; }
+  .col-unit { width: 7%; text-align: center; }
+  .col-rate { width: 9%; text-align: right; }
+  .col-total { width: 12%; text-align: right; }
+  .col-taxable { width: 10%; text-align: right; }
+  .col-gst { width: 9%; text-align: center; }
+  
+  .items-table tfoot td {
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+    padding: 3px 4px;
+  }
+  
+  .bottom-blocks-table td {
+    vertical-align: top;
+    padding: 0;
+  }
+  
+  .tax-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .tax-table th, .tax-table td {
+    border: 1px solid #000;
+    padding: 2px 2px;
+    font-size: 7.5pt;
+    text-align: center;
+    line-height: 1.15;
+  }
+  .tax-table th {
+    font-weight: bold;
+  }
+  
+  .amount-words-box {
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+    padding: 4px 8px;
+    font-size: 8.5pt;
+    line-height: 1.35;
+  }
+  
+  .bank-details-box {
+    padding: 4px 8px;
+    font-size: 8.5pt;
+    line-height: 1.45;
+  }
+  
+  .terms-box {
+    padding: 5px 8px;
+    font-size: 8pt;
+    line-height: 1.35;
+  }
+  
+  .signature-box {
+    padding: 0 12px 8px 8px;
+    text-align: right;
+    font-size: 8.5pt;
+  }
+  
+  .footer-notice {
+    border-top: 1px solid #000;
+    text-align: center;
+    font-size: 8pt;
+    font-weight: bold;
+    padding: 3px 0;
+    line-height: 1.2;
+  }
+
+  @media print {
+    @page {
+      margin: 0 !important;
+      size: A4 portrait;
+    }
+    html, body {
+      background-color: #FFF085 !important;
+    }
+    .page-container {
+      padding: 7mm 8mm 7mm 8mm !important;
+      background-color: #FFF085 !important;
+      page-break-after: always !important;
+    }
+    .page-container:last-child {
+      page-break-after: avoid !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="page-container">
+    <div class="voucher-container">
+      <!-- Top Header -->
+      <table class="top-table">
+        <tr>
+          <td style="width: 55%; border-right: 1.5px solid #000;">
+            <div style="display: flex; justify-content: space-between; font-size: 8.5pt; font-weight: bold; margin-bottom: 2px;">
+              <span>GSTIN: 10BGLPK7944K2Z3</span>
+              <span>Mob.: 9973959953</span>
+            </div>
+            <div class="store-title">SANDEEP TRADERS</div>
+            <div class="store-details">
+              <strong>Main Road Kashichak (Nawada)</strong>, Bihar<br>
+              Deals in: Grocery, Mid Day Meal Rations, Fuel &amp; General Goods
+            </div>
+          </td>
+          <td style="width: 45%; padding-left: 9px;">
+            <div class="invoice-box-title">TAX INVOICE-CUM BILL OF SUPPLY</div>
+            <div class="invoice-meta">
+              <table style="width: 100%; border-collapse: collapse; font-size: 8.5pt;">
+                <tr>
+                  <td style="font-weight: bold; width: 40%;">Invoice No.:</td>
+                  <td style="font-weight: bold;">2026-27 / </td>
+                </tr>
+                <tr>
+                  <td>Dated:</td>
+                  <td><strong>30 September 2026</strong></td>
+                </tr>
+                <tr>
+                  <td>Place of Supply:</td>
+                  <td>Bihar (10)</td>
+                </tr>
+                <tr>
+                  <td>Ref. / Month:</td>
+                  <td><strong>September 2026</strong> &nbsp;(Ref: 1-Sep-26)</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Receiver & Scheme Box -->
+      <table class="sub-header-table">
+        <tr>
+          <td style="width: 55%; border-right: 1.5px solid #000;">
+            <div class="sub-header-title">DETAILS OF RECIPIENT (BILLED TO):</div>
+            <table style="width: 100%; border-collapse: collapse; font-size: 8.5pt;">
+              <tr>
+                <td style="font-weight: bold; font-size: 9.5pt;" colspan="2">मध्य विद्यालय चण्डीनोवाँ</td>
+              </tr>
+              <tr>
+                <td>प्रखंड: <strong>वारिसलीगंज</strong></td>
+                <td>जिला: <strong>नवादा (बिहार)</strong></td>
+              </tr>
+              <tr>
+                <td>UDISE Code: <strong>10360400501</strong></td>
+                <td>State Code: <strong>10 (Bihar)</strong></td>
+              </tr>
+            </table>
+          </td>
+          <td style="width: 45%; padding-left: 9px;">
+            <div class="sub-header-title">SCHEME / PROGRAMME DETAILS:</div>
+            <div style="font-size: 8.5pt; line-height: 1.45;">
+              <strong>PM POSHAN Scheme (Mid-Day Meal)</strong><br>
+              Purpose: <strong>Cooking Cost & Fuel Material Purchase</strong><br>
+              Category: Primary &amp; Upper Primary (I - VIII)<br>
+              Payment Mode: Direct Bank Transfer / PFMS
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Items Table -->
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th class="col-sr">Sl.</th>
+            <th class="col-desc">Description of Goods / Services</th>
+            <th class="col-hsn">HSN</th>
+            <th class="col-qty">Quantity</th>
+            <th class="col-unit">Unit</th>
+            <th class="col-rate">Rate (₹)</th>
+            <th class="col-total">Amount (₹)</th>
+            <th class="col-taxable">Taxable Val</th>
+            <th class="col-gst">GST Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr>
+        <td class="col-sr">1</td>
+        <td class="col-desc">हल्दी पाउडर (Haldi Powder)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">4.036</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">250.00</td>
+        <td class="col-total">1009.00</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">2</td>
+        <td class="col-desc">धनिया पाउडर (Coriander Powder)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">2.421</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">175.00</td>
+        <td class="col-total">423.68</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">3</td>
+        <td class="col-desc">मिक्स मसाला (Mix Masala)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">1.615</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">340.00</td>
+        <td class="col-total">549.10</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">4</td>
+        <td class="col-desc">लाल मिर्च पाउडर (Red Chili Powder)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">0.807</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">300.00</td>
+        <td class="col-total">242.10</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">5</td>
+        <td class="col-desc">सरसों तेल (Mustard Oil)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">23.981</td>
+        <td class="col-unit">Lit</td>
+        <td class="col-rate">190.00</td>
+        <td class="col-total">4556.39</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">6</td>
+        <td class="col-desc">सोया बड़ी (Soya Chunks)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">35.900</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">92.00</td>
+        <td class="col-total">3302.80</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">7</td>
+        <td class="col-desc">चना दाल (Chana Dal)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">15.130</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">100.00</td>
+        <td class="col-total">1513.00</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">8</td>
+        <td class="col-desc">मूंग दाल (Moong Dal)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">15.130</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">100.00</td>
+        <td class="col-total">1513.00</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">9</td>
+        <td class="col-desc">मसूर दाल (Masoor Dal)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">15.130</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">100.00</td>
+        <td class="col-total">1513.00</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">10</td>
+        <td class="col-desc">लाल चना (Red Chana)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">60.907</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">90.00</td>
+        <td class="col-total">5481.63</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">11</td>
+        <td class="col-desc">आलू (Potato)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">76.560</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">30.00</td>
+        <td class="col-total">2296.80</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">12</td>
+        <td class="col-desc">प्याज (Onion)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">18.269</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">39.00</td>
+        <td class="col-total">712.49</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">13</td>
+        <td class="col-desc">कद्दू (Pumpkin)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">18.269</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">39.00</td>
+        <td class="col-total">712.49</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">14</td>
+        <td class="col-desc">झिंगा / नेनुआ (Vegetables)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">18.268</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">39.00</td>
+        <td class="col-total">712.45</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">15</td>
+        <td class="col-desc">टमाटर (Tomato)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">18.268</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">39.00</td>
+        <td class="col-total">712.45</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">16</td>
+        <td class="col-desc">सूखी मिर्च (Dry Chilli)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">0.807</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">250.00</td>
+        <td class="col-total">201.75</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">17</td>
+        <td class="col-desc">जीरा (Cumin)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">0.808</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">490.00</td>
+        <td class="col-total">395.92</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">18</td>
+        <td class="col-desc">नमक (Salt)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">5.654</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">15.00</td>
+        <td class="col-total">84.81</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr>
+        <td class="col-sr">19</td>
+        <td class="col-desc">जलावन (Firewood / Fuel)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">532.296</td>
+        <td class="col-unit">KG</td>
+        <td class="col-rate">14.00</td>
+        <td class="col-total">7452.14</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6" style="text-align: right; font-weight: bold; padding-right: 8px;">GRAND TOTAL / NET PAYABLE:</td>
+            <td class="col-total" style="font-weight: 900; font-size: 9.5pt; text-align: right;">₹ 33,385.00</td>
+            <td class="col-taxable"></td>
+            <td class="col-gst"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- Bottom Blocks -->
+      <table class="bottom-blocks-table">
+        <tr>
+          <td style="width: 55%; border-right: 1.5px solid #000;">
+            <table class="tax-table">
+              <thead>
+                <tr>
+                  <th>Tax Type</th>
+                  <th>Rate</th>
+                  <th>Taxable Amt</th>
+                  <th>CGST (₹)</th>
+                  <th>SGST (₹)</th>
+                  <th>Total Tax</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GST / Exempt</td>
+                  <td>0.00%</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr style="font-weight: bold;">
+                  <td colspan="2">TOTAL TAX</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="amount-words-box">
+              <strong>Amount in Words:</strong><br>
+              <span>INR THIRTY THREE THOUSAND THREE HUNDRED AND EIGHTY FIVE ONLY</span>
+            </div>
+            <div class="bank-details-box">
+              <strong>Bank Details:</strong> Bank of Baroda | A/C: <strong>38240200000215</strong><br>
+              IFSC: <strong>BARB0WARISL</strong> | Branch: Warisaliganj, Nawada
+            </div>
+          </td>
+          <td style="width: 45%; vertical-align: top;">
+            <div class="terms-box">
+              <strong>Terms &amp; Conditions:</strong>
+              
+      <div>1. Goods once sold will not be taken back.</div>
+      <div>2. All disputes are subject to Nawada jurisdiction.</div>
+      <div>3. Certified that particulars given above are true and correct.</div>
+  
+            </div>
+            <div style="height: 48px;"></div>
+            <div class="signature-box">
+              For <strong>SANDEEP TRADERS</strong><br><br><br>
+              <strong>Authorised Signatory</strong>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Footer Notice -->
+      <div class="footer-notice">
+        This is a computer generated invoice and serves as official bill of supply for Mid-Day Meal records.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div class="voucher-container">
+      <!-- Top Header -->
+      <table class="top-table">
+        <tr>
+          <td style="width: 55%; border-right: 1.5px solid #000;">
+            <div style="display: flex; justify-content: space-between; font-size: 8.5pt; font-weight: bold; margin-bottom: 2px;">
+              <span>GSTIN: 10BGLPK7944K2Z3</span>
+              <span>Mob.: 9973959953</span>
+            </div>
+            <div class="store-title">SANDEEP TRADERS</div>
+            <div class="store-details">
+              <strong>Main Road Kashichak (Nawada)</strong>, Bihar<br>
+              Deals in: Grocery, Mid Day Meal Rations, Fuel &amp; General Goods
+            </div>
+          </td>
+          <td style="width: 45%; padding-left: 9px;">
+            <div class="invoice-box-title">TAX INVOICE-CUM BILL OF SUPPLY</div>
+            <div class="invoice-meta">
+              <table style="width: 100%; border-collapse: collapse; font-size: 8.5pt;">
+                <tr>
+                  <td style="font-weight: bold; width: 40%;">Invoice No.:</td>
+                  <td style="font-weight: bold;">2026-27 / </td>
+                </tr>
+                <tr>
+                  <td>Dated:</td>
+                  <td><strong>30 September 2026</strong></td>
+                </tr>
+                <tr>
+                  <td>Place of Supply:</td>
+                  <td>Bihar (10)</td>
+                </tr>
+                <tr>
+                  <td>Ref. / Month:</td>
+                  <td><strong>September 2026</strong> &nbsp;(Ref: 1-Sep-26)</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Receiver & Scheme Box -->
+      <table class="sub-header-table">
+        <tr>
+          <td style="width: 55%; border-right: 1.5px solid #000;">
+            <div class="sub-header-title">DETAILS OF RECIPIENT (BILLED TO):</div>
+            <table style="width: 100%; border-collapse: collapse; font-size: 8.5pt;">
+              <tr>
+                <td style="font-weight: bold; font-size: 9.5pt;" colspan="2">मध्य विद्यालय चण्डीनोवाँ</td>
+              </tr>
+              <tr>
+                <td>प्रखंड: <strong>वारिसलीगंज</strong></td>
+                <td>जिला: <strong>नवादा (बिहार)</strong></td>
+              </tr>
+              <tr>
+                <td>UDISE Code: <strong>10360400501</strong></td>
+                <td>State Code: <strong>10 (Bihar)</strong></td>
+              </tr>
+            </table>
+          </td>
+          <td style="width: 45%; padding-left: 9px;">
+            <div class="sub-header-title">SCHEME / PROGRAMME DETAILS:</div>
+            <div style="font-size: 8.5pt; line-height: 1.45;">
+              <strong>PM POSHAN Scheme (Mid-Day Meal)</strong><br>
+              Purpose: <strong>Egg & Seasonal Fruit Procurement (अंडा / फल सामग्री क्रय)</strong><br>
+              Category: Primary &amp; Upper Primary (I - VIII)<br>
+              Payment Mode: Direct Bank Transfer / PFMS
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Items Table -->
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th class="col-sr">Sl.</th>
+            <th class="col-desc">Description of Goods / Services</th>
+            <th class="col-hsn">HSN</th>
+            <th class="col-qty">Quantity</th>
+            <th class="col-unit">Unit</th>
+            <th class="col-rate">Rate (₹)</th>
+            <th class="col-total">Amount (₹)</th>
+            <th class="col-taxable">Taxable Val</th>
+            <th class="col-gst">GST Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+      <tr class="item-row">
+        <td class="col-sr">1</td>
+        <td class="col-desc" style="font-weight: 600; font-size: 9.5pt;">अंडा / फल (Egg / Fruit)</td>
+        <td class="col-hsn"></td>
+        <td class="col-qty">327</td>
+        <td class="col-unit">PCS</td>
+        <td class="col-rate">5.00</td>
+        <td class="col-total" style="font-size: 9.5pt; font-weight: bold;">1,635.00</td>
+        <td class="col-taxable"></td>
+        <td class="col-gst"></td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+      <tr class="empty-row">
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+      </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="6" style="text-align: right; font-weight: bold; padding-right: 8px;">GRAND TOTAL / NET PAYABLE:</td>
+            <td class="col-total" style="font-weight: 900; font-size: 9.5pt; text-align: right;">₹ 1,635.00</td>
+            <td class="col-taxable"></td>
+            <td class="col-gst"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- Bottom Blocks -->
+      <table class="bottom-blocks-table">
+        <tr>
+          <td style="width: 55%; border-right: 1.5px solid #000;">
+            <table class="tax-table">
+              <thead>
+                <tr>
+                  <th>Tax Type</th>
+                  <th>Rate</th>
+                  <th>Taxable Amt</th>
+                  <th>CGST (₹)</th>
+                  <th>SGST (₹)</th>
+                  <th>Total Tax</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GST / Exempt</td>
+                  <td>0.00%</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr style="font-weight: bold;">
+                  <td colspan="2">TOTAL TAX</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="amount-words-box">
+              <strong>Amount in Words:</strong><br>
+              <span>INR ONE THOUSAND SIX HUNDRED AND THIRTY FIVE ONLY</span>
+            </div>
+            <div class="bank-details-box">
+              <strong>Bank Details:</strong> Bank of Baroda | A/C: <strong>38240200000215</strong><br>
+              IFSC: <strong>BARB0WARISL</strong> | Branch: Warisaliganj, Nawada
+            </div>
+          </td>
+          <td style="width: 45%; vertical-align: top;">
+            <div class="terms-box">
+              <strong>Terms &amp; Conditions:</strong>
+              
+      <div>1. Fresh &amp; nutritious eggs / seasonal fruits supplied as per MDM norms.</div>
+      <div>2. Goods once delivered and verified will not be returned.</div>
+      <div>3. Certified that particulars given above are true and correct.</div>
+  
+            </div>
+            <div style="height: 48px;"></div>
+            <div class="signature-box">
+              For <strong>SANDEEP TRADERS</strong><br><br><br>
+              <strong>Authorised Signatory</strong>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Footer Notice -->
+      <div class="footer-notice">
+        This is a computer generated invoice and serves as official bill of supply for Mid-Day Meal records.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

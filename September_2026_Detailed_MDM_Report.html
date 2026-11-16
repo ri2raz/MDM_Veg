@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>विस्तृत मासिक प्रतिवेदन एवं सामग्री विवरणी - सितम्बर 2026</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 8mm 9mm 8mm 9mm;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'Noto Sans Devanagari', sans-serif;
+    color: #1e293b;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-size: 8.5pt;
+    line-height: 1.25;
+  }
+  .page {
+    width: 100%;
+    height: 100%;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+  }
+  .page:last-child {
+    page-break-after: avoid;
+  }
+  .outer-border {
+    border: 2px solid #1e3a8a;
+    border-radius: 8px;
+    padding: 8px 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Header styling */
+  .doc-header {
+    text-align: center;
+    border-bottom: 2px solid #2563eb;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+  }
+  .doc-title {
+    font-size: 13.5pt;
+    font-weight: 800;
+    color: #1e3a8a;
+    letter-spacing: 0.3px;
+  }
+  .doc-subtitle {
+    font-size: 10.5pt;
+    font-weight: bold;
+    color: #2563eb;
+    margin-top: 2px;
+  }
+  .doc-desc {
+    font-size: 7.5pt;
+    color: #64748b;
+    margin-top: 1px;
+  }
+
+  /* Stat cards */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-bottom: 7px;
+  }
+  .stat-card {
+    border-radius: 5px;
+    padding: 4px 6px;
+    text-align: center;
+    border: 1px solid #cbd5e1;
+  }
+  .stat-card.blue {
+    background-color: #f0f7ff;
+    border-color: #bfdbfe;
+  }
+  .stat-card.yellow {
+    background-color: #fefce8;
+    border-color: #fef08a;
+  }
+  .stat-card.green {
+    background-color: #ecfdf5;
+    border-color: #a7f3d0;
+  }
+  .stat-label {
+    font-size: 7pt;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 1px;
+  }
+  .stat-value {
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: #1e3a8a;
+  }
+  .stat-card.yellow .stat-value {
+    color: #854d0e;
+  }
+  .stat-card.green .stat-value {
+    color: #065f46;
+  }
+
+  /* Section headers */
+  .section-bar {
+    background: #1e40af;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 8pt;
+    padding: 3px 6px;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+  }
+  .section-bar .norm-badge {
+    font-size: 7pt;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: normal;
+  }
+
+  /* Tables */
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 4px;
+    font-size: 7.5pt;
+  }
+  table.data-table th, table.data-table td {
+    border: 1px solid #cbd5e1;
+    padding: 2.2px 4px;
+    line-height: 1.15;
+  }
+  table.data-table th {
+    background-color: #f8fafc;
+    color: #1e293b;
+    font-weight: bold;
+    text-align: center;
+  }
+  table.data-table td.text-center { text-align: center; }
+  table.data-table td.text-right { text-align: right; }
+  table.data-table tr.total-row {
+    background-color: #eff6ff;
+    font-weight: bold;
+    color: #1e3a8a;
+  }
+  table.data-table tr.subtotal-row {
+    background-color: #f1f5f9;
+    font-weight: bold;
+  }
+  .highlight-val {
+    color: #1e40af;
+    font-weight: 600;
+  }
+
+  /* Note at bottom of Page 1 */
+  .footnote {
+    font-size: 6.8pt;
+    color: #64748b;
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  /* Page 2 Days Grid */
+  .days-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-top: 5px;
+  }
+  .day-card {
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .day-header {
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #cbd5e1;
+    padding: 2.5px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7.5pt;
+    font-weight: bold;
+  }
+  .day-title {
+    color: #0f172a;
+  }
+  .day-att {
+    color: #1d4ed8;
+    font-size: 7pt;
+  }
+  .day-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 6.8pt;
+  }
+  .day-card th, .day-card td {
+    border: 1px solid #e2e8f0;
+    padding: 1.8px 3px;
+    line-height: 1.15;
+  }
+  .day-card th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    text-align: center;
+    color: #475569;
+  }
+  .day-card td.r { text-align: right; }
+  .day-card td.c { text-align: center; }
+  .day-total-row {
+    background-color: #eff6ff;
+    font-weight: bold;
+    color: #1e3a8a;
+  }
+
+  /* Bottom grand bar */
+  .grand-bar {
+    background: #eff6ff;
+    border: 1.5px solid #bfdbfe;
+    border-radius: 5px;
+    padding: 4px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8.5pt;
+    font-weight: bold;
+    color: #1e3a8a;
+    margin-top: 5px;
+  }
+  .grand-bar-val {
+    font-size: 10pt;
+    color: #1d4ed8;
+  }
+
+  /* Signatures */
+  .sig-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px 5px 25px;
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 5px;
+  }
+  .sig-box {
+    text-align: center;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="outer-border">
+    <div>
+      <!-- Header -->
+      <div class="doc-header">
+        <div class="doc-title">विद्यालय से संबंधित मासिक विस्तृत प्रतिवेदन एवं सामग्री (वाउचर) विवरणी</div>
+        <div class="doc-subtitle">माह: सितम्बर 2026 | प्रधानमंत्री पोषण शक्ति निर्माण योजना (MDM)</div>
+        <div class="doc-desc">प्रत्येक खाद्य सामग्री की भौतिक मात्रा (kg) एवं वित्तीय दर/राशि का विस्तृत विवरण</div>
+      </div>
+
+      <!-- 5 Stat Cards -->
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="stat-label">उपस्थिति (वर्ग 1-5)</div>
+          <div class="stat-value">901 छात्र</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-label">उपस्थिति (वर्ग 6-8)</div>
+          <div class="stat-value">2,682 छात्र</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-label">कुल छात्र उपस्थिति</div>
+          <div class="stat-value">3,583 छात्र</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-label">कुल चावल खपत</div>
+          <div class="stat-value">492.400 kg</div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-label">कुल परिवर्तन मूल्य (व्यय)</div>
+          <div class="stat-value">₹ 33,384.72</div>
+        </div>
+      </div>
+
+      <!-- Part (क) -->
+      <div class="section-bar">
+        <span>भाग (क) : खाद्यान्न (चावल) उपभोग विवरणी (FOODGRAIN / RICE CONSUMPTION)</span>
+        <span class="norm-badge">मानक: 100g (I-V) | 150g (VI-VIII)</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 5%;">क्र०</th>
+            <th style="width: 35%;">वर्ग समूह (Class Category)</th>
+            <th style="width: 25%;">मानक मात्रा प्रति छात्र/दिन</th>
+            <th style="width: 15%;">कुल लाभान्वित छात्र</th>
+            <th style="width: 20%;">कुल उपभोग मात्रा (Total Rice kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">1</td>
+            <td>प्राथमिक स्तर (वर्ग 1 से 5)</td>
+            <td class="text-center">100 ग्राम (0.100 kg)</td>
+            <td class="text-center">901</td>
+            <td class="text-right highlight-val">90.100 kg</td>
+          </tr>
+          <tr>
+            <td class="text-center">2</td>
+            <td>उच्च प्राथमिक स्तर (वर्ग 6 से 8)</td>
+            <td class="text-center">150 ग्राम (0.150 kg)</td>
+            <td class="text-center">2,682</td>
+            <td class="text-right highlight-val">402.300 kg</td>
+          </tr>
+          <tr class="total-row">
+            <td colspan="3" class="text-center">कुल खाद्यान्न (चावल) की खपत (GRAND TOTAL RICE)</td>
+            <td class="text-center">3,583</td>
+            <td class="text-right">492.400 kg (4.924 क्विंटल)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Part (ख) -->
+      <div class="section-bar">
+        <span>भाग (ख) : वित्तीय प्राप्ति विवरणी (RECEIPTS SUMMARY)</span>
+        <span class="norm-badge">दर अनुसार देय राशि</span>
+      </div>
+      <table class="data-table">
+        <tbody>
+          <tr>
+            <td style="width: 75%;">6. कुल लाभान्वित छात्रों की सं० (वर्ग 1 से 5)</td>
+            <td style="width: 25%;" class="text-right highlight-val">901 छात्र</td>
+          </tr>
+          <tr>
+            <td>7. कुल लाभान्वित छात्रों की सं० (वर्ग 6 से 8)</td>
+            <td class="text-right highlight-val">2,682 छात्र</td>
+          </tr>
+          <tr>
+            <td>13. कुल योग परिवर्तन मूल्य (वर्ग 1 से 5) [901 छात्र × ₹6.78]</td>
+            <td class="text-right highlight-val">₹ 6,108.78</td>
+          </tr>
+          <tr>
+            <td>14. कुल योग परिवर्तन मूल्य (वर्ग 6 से 8) [2,682 छात्र × ₹10.17]</td>
+            <td class="text-right highlight-val">₹ 27,275.94</td>
+          </tr>
+          <tr class="total-row">
+            <td>कुल योग प्राप्ति राशि (GRAND TOTAL RECEIPTS)</td>
+            <td class="text-right">₹ 33,384.72</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Part (ग) -->
+      <div class="section-bar">
+        <span>भाग (ग) : सामग्रीवार कुल उपभोग मात्रा एवं व्यय विवरणी (DETAILED SUBSTANCES CONSUMPTION &amp; VOUCHER REPORT)</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th rowspan="2" style="width: 4%;">क्र०</th>
+            <th rowspan="2" style="width: 23%;">सामग्री का नाम<br>(Substance / Item)</th>
+            <th rowspan="2" style="width: 11%;">निर्धारित दर<br>(₹ / kg)</th>
+            <th colspan="2" style="width: 20%;">वर्ग 1 से 5 (901 छात्र)</th>
+            <th colspan="2" style="width: 20%;">वर्ग 6 से 8 (2,682 छात्र)</th>
+            <th colspan="2" style="width: 22%;">कुल मासिक उपभोग (Grand Total)</th>
+          </tr>
+          <tr>
+            <th style="width: 10%;">मात्रा (kg)</th>
+            <th style="width: 10%;">राशि (₹)</th>
+            <th style="width: 10%;">मात्रा (kg)</th>
+            <th style="width: 10%;">राशि (₹)</th>
+            <th style="width: 11%;">कुल मात्रा (kg)</th>
+            <th style="width: 11%;">कुल राशि (₹)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">1</td>
+            <td><strong>दाल</strong> (Pulses)</td>
+            <td class="text-center">₹ 100.0</td>
+            <td class="text-right">8.520 kg</td>
+            <td class="text-right">₹ 852.00</td>
+            <td class="text-right">36.870 kg</td>
+            <td class="text-right">₹ 3,687.00</td>
+            <td class="text-right highlight-val">45.390 kg</td>
+            <td class="text-right highlight-val">₹ 4,539.00</td>
+          </tr>
+          <tr>
+            <td class="text-center">2</td>
+            <td><strong>मसाला / नमक</strong> (Spices &amp; Salt)</td>
+            <td class="text-center">₹ 180.0</td>
+            <td class="text-right">2.703 kg</td>
+            <td class="text-right">₹ 486.54</td>
+            <td class="text-right">13.445 kg</td>
+            <td class="text-right">₹ 2,420.03</td>
+            <td class="text-right highlight-val">16.148 kg</td>
+            <td class="text-right highlight-val">₹ 2,906.57</td>
+          </tr>
+          <tr>
+            <td class="text-center">3</td>
+            <td><strong>तेल</strong> (Edible Oil)</td>
+            <td class="text-center">₹ 190.0</td>
+            <td class="text-right">4.505 kg</td>
+            <td class="text-right">₹ 855.95</td>
+            <td class="text-right">19.476 kg</td>
+            <td class="text-right">₹ 3,700.49</td>
+            <td class="text-right highlight-val">23.981 kg</td>
+            <td class="text-right highlight-val">₹ 4,556.44</td>
+          </tr>
+          <tr style="background-color: #fafafa;">
+            <td class="text-center">4</td>
+            <td colspan="8"><strong>सब्जी विवरणी (Vegetables Breakdown) :</strong></td>
+          </tr>
+          <tr>
+            <td class="text-center">4.1</td>
+            <td style="padding-left: 14px;">• आलू (Potato)</td>
+            <td class="text-center">₹ 30.0</td>
+            <td class="text-right">15.360 kg</td>
+            <td class="text-right">₹ 460.80</td>
+            <td class="text-right">61.200 kg</td>
+            <td class="text-right">₹ 1,836.00</td>
+            <td class="text-right">76.560 kg</td>
+            <td class="text-right">₹ 2,296.80</td>
+          </tr>
+          <tr>
+            <td class="text-center">4.2</td>
+            <td style="padding-left: 14px;">• हरी सब्जी (Green Veg)</td>
+            <td class="text-center">₹ 39.0</td>
+            <td class="text-right">14.120 kg</td>
+            <td class="text-right">₹ 550.68</td>
+            <td class="text-right">58.954 kg</td>
+            <td class="text-right">₹ 2,299.22</td>
+            <td class="text-right">73.074 kg</td>
+            <td class="text-right">₹ 2,849.90</td>
+          </tr>
+          <tr>
+            <td class="text-center">4.3</td>
+            <td style="padding-left: 14px;">• सोयाबीन (Soya Chunks)</td>
+            <td class="text-center">₹ 92.0</td>
+            <td class="text-right">5.250 kg</td>
+            <td class="text-right">₹ 483.00</td>
+            <td class="text-right">30.650 kg</td>
+            <td class="text-right">₹ 2,819.80</td>
+            <td class="text-right">35.900 kg</td>
+            <td class="text-right">₹ 3,302.80</td>
+          </tr>
+          <tr>
+            <td class="text-center">4.4</td>
+            <td style="padding-left: 14px;">• चना (Gram / Chana)</td>
+            <td class="text-center">₹ 90.0</td>
+            <td class="text-right">10.600 kg</td>
+            <td class="text-right">₹ 954.00</td>
+            <td class="text-right">50.307 kg</td>
+            <td class="text-right">₹ 4,527.60</td>
+            <td class="text-right">60.907 kg</td>
+            <td class="text-right">₹ 5,481.60</td>
+          </tr>
+          <tr class="subtotal-row">
+            <td class="text-center">-</td>
+            <td style="font-weight: bold;">[सब्जी कुल उप-योग]</td>
+            <td class="text-center">-</td>
+            <td class="text-right">45.330 kg</td>
+            <td class="text-right">₹ 2,448.48</td>
+            <td class="text-right">201.111 kg</td>
+            <td class="text-right">₹ 11,482.62</td>
+            <td class="text-right">246.441 kg</td>
+            <td class="text-right">₹ 13,931.10</td>
+          </tr>
+          <tr>
+            <td class="text-center">5</td>
+            <td><strong>जलावन / ईंधन</strong> (Fuel)</td>
+            <td class="text-center">₹ 14.0</td>
+            <td class="text-right">104.701 kg</td>
+            <td class="text-right">₹ 1,465.81</td>
+            <td class="text-right">427.557 kg</td>
+            <td class="text-right">₹ 5,985.80</td>
+            <td class="text-right highlight-val">532.258 kg</td>
+            <td class="text-right highlight-val">₹ 7,451.61</td>
+          </tr>
+          <tr class="total-row" style="font-size: 8pt;">
+            <td colspan="3" class="text-center">कुल योग परिवर्तन मूल्य व्यय (GRAND TOTAL EXPENDITURE)</td>
+            <td class="text-right">165.759 kg</td>
+            <td class="text-right">₹ 6,108.78</td>
+            <td class="text-right">698.459 kg</td>
+            <td class="text-right">₹ 27,275.94</td>
+            <td class="text-right">864.218 kg</td>
+            <td class="text-right" style="font-size: 8.5pt;">₹ 33,384.72</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footnote">
+      * नोट: जलावन एवं अन्य सामग्रियों की भौतिक मात्रा (kg) निर्धारित दर एवं उपभोग मूल्य के अनुसार आकलित है। विस्तृत दैनिक वितरण पृष्ठ संख्या 2 पर देखें।
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="outer-border">
+    <div>
+      <!-- Header -->
+      <div class="section-bar" style="margin-top: 0; padding: 4px 8px;">
+        <span style="font-size: 9.5pt;">भाग (घ) : दिनवार सामग्री उपभोग पंजी (DAY-WISE CONSUMPTION REGISTER)</span>
+      </div>
+      <div style="text-align: center; font-size: 8pt; font-weight: bold; color: #2563eb; margin: 3px 0 5px 0;">
+        माह: सितम्बर 2026 | प्रत्येक दिवस की छात्र संख्या एवं सामग्रीवार उपभोग विवरण
+      </div>
+
+      <!-- 6 Days Grid (3 rows x 2 cols) -->
+      <div class="days-grid">
+        <!-- Monday -->
+        <div class="day-card">
+          <div class="day-header">
+            <span class="day-title">सोमवार (Monday)</span>
+            <span class="day-att">छात्र: I-V=116 | VI-VIII=331 (कुल 447)</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 26%;">सामग्री</th>
+                <th style="width: 18%;">I-V मात्रा</th>
+                <th style="width: 19%;">VI-VIII मात्रा</th>
+                <th style="width: 19%;">कुल मात्रा</th>
+                <th style="width: 18%;">कुल व्यय (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>चावल (Rice)</td><td class="r">11.600 kg</td><td class="r">49.650 kg</td><td class="r">61.250 kg</td><td class="c">-</td></tr>
+              <tr><td>दाल</td><td class="r">2.320 kg</td><td class="r">9.930 kg</td><td class="r">12.250 kg</td><td class="r">₹ 1,225.00</td></tr>
+              <tr><td>मसाला / नमक</td><td class="r">0.348 kg</td><td class="r">1.747 kg</td><td class="r">2.095 kg</td><td class="r">₹ 377.10</td></tr>
+              <tr><td>आलू</td><td class="r">1.276 kg</td><td class="r">4.965 kg</td><td class="r">6.241 kg</td><td class="r">₹ 187.23</td></tr>
+              <tr><td>हरी सब्जी</td><td class="r">4.640 kg</td><td class="r">19.860 kg</td><td class="r">24.500 kg</td><td class="r">₹ 955.50</td></tr>
+              <tr><td>तेल</td><td class="r">0.580 Lit</td><td class="r">2.317 Lit</td><td class="r">2.897 Lit</td><td class="r">₹ 550.43</td></tr>
+              <tr><td>जलावन</td><td class="r">11.600 kg</td><td class="r">49.650 kg</td><td class="r">61.250 kg</td><td class="r">₹ 857.50</td></tr>
+              <tr class="day-total-row">
+                <td colspan="4">सोमवार कुल व्यय</td>
+                <td class="r">₹ 4,152.76</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tuesday -->
+        <div class="day-card">
+          <div class="day-header">
+            <span class="day-title">मंगलवार (Tuesday)</span>
+            <span class="day-att">छात्र: I-V=210 | VI-VIII=613 (कुल 823)</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 26%;">सामग्री</th>
+                <th style="width: 18%;">I-V मात्रा</th>
+                <th style="width: 19%;">VI-VIII मात्रा</th>
+                <th style="width: 19%;">कुल मात्रा</th>
+                <th style="width: 18%;">कुल व्यय (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>चावल (Rice)</td><td class="r">21.000 kg</td><td class="r">91.950 kg</td><td class="r">112.950 kg</td><td class="c">-</td></tr>
+              <tr><td>मसाला / नमक</td><td class="r">0.630 kg</td><td class="r">2.452 kg</td><td class="r">3.082 kg</td><td class="r">₹ 554.76</td></tr>
+              <tr><td>आलू</td><td class="r">5.250 kg</td><td class="r">15.325 kg</td><td class="r">20.575 kg</td><td class="r">₹ 617.25</td></tr>
+              <tr><td>सोयाबीन</td><td class="r">5.250 kg</td><td class="r">30.650 kg</td><td class="r">35.900 kg</td><td class="r">₹ 3,302.80</td></tr>
+              <tr><td>तेल</td><td class="r">1.050 Lit</td><td class="r">4.904 Lit</td><td class="r">5.954 Lit</td><td class="r">₹ 1,131.26</td></tr>
+              <tr><td>जलावन</td><td class="r">33.600 kg</td><td class="r">112.967 kg</td><td class="r">146.567 kg</td><td class="r">₹ 2,051.94</td></tr>
+              <tr class="day-total-row">
+                <td colspan="4">मंगलवार कुल व्यय</td>
+                <td class="r">₹ 7,658.01</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Wednesday -->
+        <div class="day-card">
+          <div class="day-header">
+            <span class="day-title">बुधवार (Wednesday)</span>
+            <span class="day-att">छात्र: I-V=190 | VI-VIII=588 (कुल 778)</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 26%;">सामग्री</th>
+                <th style="width: 18%;">I-V मात्रा</th>
+                <th style="width: 19%;">VI-VIII मात्रा</th>
+                <th style="width: 19%;">कुल मात्रा</th>
+                <th style="width: 18%;">कुल व्यय (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>चावल (Rice)</td><td class="r">19.000 kg</td><td class="r">88.200 kg</td><td class="r">107.200 kg</td><td class="c">-</td></tr>
+              <tr><td>मसाला / नमक</td><td class="r">0.570 kg</td><td class="r">2.940 kg</td><td class="r">3.510 kg</td><td class="r">₹ 631.80</td></tr>
+              <tr><td>आलू</td><td class="r">1.900 kg</td><td class="r">8.820 kg</td><td class="r">10.720 kg</td><td class="r">₹ 321.60</td></tr>
+              <tr><td>चना</td><td class="r">7.600 kg</td><td class="r">35.215 kg</td><td class="r">42.815 kg</td><td class="r">₹ 3,853.35</td></tr>
+              <tr><td>तेल</td><td class="r">0.950 Lit</td><td class="r">4.116 Lit</td><td class="r">5.066 Lit</td><td class="r">₹ 962.54</td></tr>
+              <tr><td>जलावन</td><td class="r">19.000 kg</td><td class="r">88.200 kg</td><td class="r">107.200 kg</td><td class="r">₹ 1,500.80</td></tr>
+              <tr class="day-total-row">
+                <td colspan="4">बुधवार कुल व्यय</td>
+                <td class="r">₹ 7,270.09</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Thursday -->
+        <div class="day-card">
+          <div class="day-header">
+            <span class="day-title">गुरुवार (Thursday)</span>
+            <span class="day-att">छात्र: I-V=164 | VI-VIII=474 (कुल 638)</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 26%;">सामग्री</th>
+                <th style="width: 18%;">I-V मात्रा</th>
+                <th style="width: 19%;">VI-VIII मात्रा</th>
+                <th style="width: 19%;">कुल मात्रा</th>
+                <th style="width: 18%;">कुल व्यय (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>चावल (Rice)</td><td class="r">16.400 kg</td><td class="r">71.100 kg</td><td class="r">87.500 kg</td><td class="c">-</td></tr>
+              <tr><td>दाल</td><td class="r">3.280 kg</td><td class="r">14.220 kg</td><td class="r">17.500 kg</td><td class="r">₹ 1,750.00</td></tr>
+              <tr><td>मसाला / नमक</td><td class="r">0.492 kg</td><td class="r">2.502 kg</td><td class="r">2.994 kg</td><td class="r">₹ 538.92</td></tr>
+              <tr><td>आलू</td><td class="r">1.804 kg</td><td class="r">7.110 kg</td><td class="r">8.914 kg</td><td class="r">₹ 267.42</td></tr>
+              <tr><td>हरी सब्जी</td><td class="r">6.560 kg</td><td class="r">28.440 kg</td><td class="r">35.000 kg</td><td class="r">₹ 1,365.00</td></tr>
+              <tr><td>तेल</td><td class="r">0.820 Lit</td><td class="r">3.318 Lit</td><td class="r">4.138 Lit</td><td class="r">₹ 786.22</td></tr>
+              <tr><td>जलावन</td><td class="r">16.400 kg</td><td class="r">71.100 kg</td><td class="r">87.500 kg</td><td class="r">₹ 1,225.00</td></tr>
+              <tr class="day-total-row">
+                <td colspan="4">गुरुवार कुल व्यय</td>
+                <td class="r">₹ 5,932.56</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Friday -->
+        <div class="day-card">
+          <div class="day-header">
+            <span class="day-title">शुक्रवार (Friday)</span>
+            <span class="day-att">छात्र: I-V=75 | VI-VIII=252 (कुल 327)</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 26%;">सामग्री</th>
+                <th style="width: 18%;">I-V मात्रा</th>
+                <th style="width: 19%;">VI-VIII मात्रा</th>
+                <th style="width: 19%;">कुल मात्रा</th>
+                <th style="width: 18%;">कुल व्यय (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>चावल (Rice)</td><td class="r">7.500 kg</td><td class="r">37.800 kg</td><td class="r">45.300 kg</td><td class="c">-</td></tr>
+              <tr><td>मसाला / नमक</td><td class="r">0.225 kg</td><td class="r">1.260 kg</td><td class="r">1.485 kg</td><td class="r">₹ 267.30</td></tr>
+              <tr><td>आलू</td><td class="r">0.750 kg</td><td class="r">3.780 kg</td><td class="r">4.530 kg</td><td class="r">₹ 135.90</td></tr>
+              <tr><td>चना</td><td class="r">3.000 kg</td><td class="r">15.092 kg</td><td class="r">18.092 kg</td><td class="r">₹ 1,628.28</td></tr>
+              <tr><td>तेल</td><td class="r">0.375 Lit</td><td class="r">1.764 Lit</td><td class="r">2.139 Lit</td><td class="r">₹ 406.41</td></tr>
+              <tr><td>जलावन</td><td class="r">7.500 kg</td><td class="r">37.800 kg</td><td class="r">45.300 kg</td><td class="r">₹ 634.20</td></tr>
+              <tr class="day-total-row">
+                <td colspan="4">शुक्रवार कुल व्यय</td>
+                <td class="r">₹ 3,072.09</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Saturday -->
+        <div class="day-card">
+          <div class="day-header">
+            <span class="day-title">शनिवार (Saturday - खिचड़ी/चोखा)</span>
+            <span class="day-att">छात्र: I-V=146 | VI-VIII=424 (कुल 570)</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 26%;">सामग्री</th>
+                <th style="width: 18%;">I-V मात्रा</th>
+                <th style="width: 19%;">VI-VIII मात्रा</th>
+                <th style="width: 19%;">कुल मात्रा</th>
+                <th style="width: 18%;">कुल व्यय (₹)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>चावल (Rice)</td><td class="r">14.600 kg</td><td class="r">63.600 kg</td><td class="r">78.200 kg</td><td class="c">-</td></tr>
+              <tr><td>दाल</td><td class="r">2.920 kg</td><td class="r">12.720 kg</td><td class="r">15.640 kg</td><td class="r">₹ 1,564.00</td></tr>
+              <tr><td>मसाला / नमक</td><td class="r">0.438 kg</td><td class="r">2.544 kg</td><td class="r">2.982 kg</td><td class="r">₹ 536.76</td></tr>
+              <tr><td>आलू</td><td class="r">4.380 kg</td><td class="r">21.200 kg</td><td class="r">25.580 kg</td><td class="r">₹ 767.40</td></tr>
+              <tr><td>हरी सब्जी</td><td class="r">2.920 kg</td><td class="r">10.654 kg</td><td class="r">13.574 kg</td><td class="r">₹ 529.39</td></tr>
+              <tr><td>तेल</td><td class="r">0.730 Lit</td><td class="r">3.057 Lit</td><td class="r">3.787 Lit</td><td class="r">₹ 719.53</td></tr>
+              <tr><td>जलावन</td><td class="r">16.598 kg</td><td class="r">67.840 kg</td><td class="r">84.438 kg</td><td class="r">₹ 1,182.13</td></tr>
+              <tr class="day-total-row">
+                <td colspan="4">शनिवार कुल व्यय</td>
+                <td class="r">₹ 5,299.21</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Grand Total Bar -->
+      <div class="grand-bar">
+        <span>मासिक कुल व्यय महायोग (6 कार्यदिवस / कुल 3,583 छात्र उपस्थिति)</span>
+        <span class="grand-bar-val">₹ 33,384.72</span>
+      </div>
+    </div>
+
+    <!-- Signatures -->
+    <div class="sig-container">
+      <div class="sig-box">
+        ------------------------------------------------<br>
+        हस्ताक्षर साधन सेवी / नोडल शिक्षक<br>
+        दिनांक: ........................
+      </div>
+      <div class="sig-box">
+        ------------------------------------------------<br>
+        हस्ताक्षर एवं मुहर प्रधानाध्यापक<br>
+        दिनांक: ........................
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
