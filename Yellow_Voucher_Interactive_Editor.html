@@ -2,7 +2,8 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<title>Interactive MDM Voucher Editor - Rs 5,148</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDM Multi-School & Vendor Voucher Portal - बिहार विद्यालय मध्याह्न भोजन</title>
 <style>
   @page {
     size: A4 portrait;
@@ -16,225 +17,442 @@
   html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', 'Calibri', 'Nirmala UI', 'Mangal', Arial, sans-serif;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Nirmala UI', 'Mangal', Roboto, sans-serif;
     color: #000;
-    background-color: #e2e8f0;
+    background-color: #0f172a;
   }
-  
-  /* Top Interactive Toolbar */
-  .toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background: #1e293b;
-    color: #fff;
+
+  /* Top Navigation & Status Bar */
+  .portal-nav {
+    background: #090d16;
+    color: #f8fafc;
     padding: 10px 20px;
+    border-bottom: 2px solid #3b82f6;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    flex-wrap: wrap;
+    gap: 12px;
   }
-  .toolbar-title {
-    font-size: 14pt;
-    font-weight: 700;
+  .portal-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
-  .badge {
-    background: #f59e0b;
-    color: #000;
-    font-size: 9pt;
+  .brand-badge {
+    background: #2563eb;
+    color: #fff;
+    font-size: 11pt;
     font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
     letter-spacing: 0.5px;
   }
-  .btn-group {
-    display: flex;
-    gap: 10px;
+  .brand-text-title {
+    font-size: 12.5pt;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
   }
-  .btn {
-    border: none;
-    padding: 8px 16px;
-    font-size: 10pt;
+  .brand-text-sub {
+    font-size: 8pt;
+    color: #94a3b8;
+  }
+  .portal-links {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .nav-btn {
+    text-decoration: none;
+    color: #cbd5e1;
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 8pt;
     font-weight: 600;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .nav-btn:hover {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #60a5fa;
+  }
+  .nav-btn.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #60a5fa;
+  }
+  .nav-btn.pdf-btn {
+    background: #047857;
+    border-color: #059669;
+    color: #fff;
+  }
+  .nav-btn.pdf-btn:hover {
+    background: #059669;
+  }
+
+  /* Admin Control Center Toolbar */
+  .admin-panel {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 12px 20px;
+    border-bottom: 1px solid #334155;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+  .admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .admin-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #60a5fa;
+    letter-spacing: 0.5px;
+  }
+  .select-styled {
+    background: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #475569;
+    padding: 6px 10px;
     border-radius: 6px;
+    font-size: 9pt;
+    font-weight: 600;
+    outline: none;
+    width: 100%;
     cursor: pointer;
-    transition: all 0.2s;
+  }
+  .select-styled:focus {
+    border-color: #3b82f6;
+  }
+  .action-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 2px;
+  }
+  .mini-btn {
+    background: #334155;
+    border: 1px solid #475569;
+    color: #e2e8f0;
+    padding: 4px 8px;
+    font-size: 7.5pt;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.15s;
+  }
+  .mini-btn:hover {
+    background: #475569;
+    color: #fff;
+  }
+  .mini-btn.blue {
+    background: #2563eb;
+    border-color: #3b82f6;
+    color: #fff;
+  }
+  .mini-btn.blue:hover {
+    background: #1d4ed8;
+  }
+
+  /* Quick Calculator inside Admin Panel */
+  .calc-fields {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .calc-input-wrap {
+    flex: 1;
+  }
+  .calc-input-wrap label {
+    display: block;
+    font-size: 7pt;
+    color: #94a3b8;
+    margin-bottom: 2px;
+  }
+  .calc-input {
+    width: 100%;
+    background: #1e293b;
+    border: 1px solid #475569;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 8.5pt;
+    font-weight: bold;
+    text-align: right;
+  }
+  .calc-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-size: 7.5pt;
+    margin-top: 4px;
+  }
+  .calc-tag {
+    background: #1e293b;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #334155;
+    color: #cbd5e1;
+  }
+  .calc-tag.highlight {
+    background: #065f46;
+    border-color: #059669;
+    color: #a7f3d0;
+    font-weight: bold;
+  }
+
+  /* Mode Bar & Print Controls */
+  .controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #334155;
+  }
+  .mode-switch {
+    display: flex;
+    gap: 6px;
+    background: #0f172a;
+    padding: 3px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+  }
+  .mode-tab {
+    padding: 5px 12px;
+    font-size: 8.5pt;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.15s;
+  }
+  .mode-tab.active {
+    background: #2563eb;
+    color: #ffffff;
+  }
+  .controls-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-print {
+    background: #10b981;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 9.5pt;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+    transition: all 0.2s;
   }
-  .btn-primary {
-    background: #3b82f6;
-    color: #fff;
-  }
-  .btn-primary:hover {
-    background: #2563eb;
-  }
-  .btn-success {
-    background: #10b981;
-    color: #fff;
-  }
-  .btn-success:hover {
+  .btn-print:hover {
     background: #059669;
+    transform: translateY(-1px);
   }
-  .btn-outline {
-    background: transparent;
-    color: #e2e8f0;
-    border: 1px solid #64748b;
-  }
-  .btn-outline:hover {
+  .btn-tool {
     background: #334155;
+    color: #f1f5f9;
+    border: 1px solid #475569;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 8.5pt;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-tool:hover {
+    background: #475569;
     color: #fff;
   }
 
+  /* Paper Area */
   .page-wrapper {
-    padding: 25px 0 50px 0;
+    padding: 24px 0 60px 0;
     display: flex;
     justify-content: center;
+    background-color: #334155;
   }
-  
-  /* Voucher Paper Box */
   .voucher-container {
-    width: 196mm;
-    margin: 0 auto;
+    background-color: #FFF085;
+    width: 204mm;
+    min-height: 288mm;
+    padding: 6mm 7mm;
     border: 1.5px solid #000;
-    background-color: #FFF085; /* Natural voucher yellow tint */
-    page-break-inside: avoid;
-    page-break-after: avoid;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    transition: background-color 0.2s;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: background-color 0.3s;
+    color: #000;
   }
   .voucher-container.white-paper {
     background-color: #ffffff !important;
   }
-  
-  /* Top Section */
-  .top-table {
+
+  /* Tables inside Voucher */
+  .top-table, .sub-header-table, .lower-table {
     width: 100%;
     border-collapse: collapse;
   }
-  .top-table td {
+  .top-table td, .sub-header-table td, .lower-table td {
     vertical-align: top;
-    padding: 5px 9px;
+    padding: 3px 5px;
   }
   .store-title {
-    font-size: 15.5pt;
+    font-size: 15pt;
     font-weight: 900;
+    letter-spacing: 0.5px;
     line-height: 1.15;
-    letter-spacing: 0.4px;
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 2px 0;
   }
   .store-details {
     font-size: 8.5pt;
-    margin-top: 2px;
     line-height: 1.35;
   }
-  
   .invoice-box-title {
-    border: 1.5px solid #000;
-    font-size: 11pt;
-    font-weight: bold;
+    font-size: 10pt;
+    font-weight: 900;
     text-align: center;
-    padding: 3px 6px;
-    margin-bottom: 4px;
-    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 3px;
     letter-spacing: 0.3px;
   }
-  .invoice-meta {
-    font-size: 9pt;
-    line-height: 1.4;
-  }
-  
-  /* Receiver & Reference */
   .sub-header-table {
-    width: 100%;
-    border-collapse: collapse;
     border-top: 1.5px solid #000;
     border-bottom: 1.5px solid #000;
   }
-  .sub-header-table td {
-    padding: 4px 9px;
-    vertical-align: top;
-    font-size: 8.5pt;
-    line-height: 1.3;
-  }
   .sub-header-title {
-    font-weight: bold;
     font-size: 8.5pt;
-    margin-bottom: 2px;
+    font-weight: bold;
     text-decoration: underline;
+    margin-bottom: 2px;
   }
-  
-  /* Product Table - 9 Columns */
-  .product-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  .product-table th, .product-table td {
-    border: 1px solid #000;
-    padding: 2px 2px;
-    font-size: 8.5pt;
-    line-height: 1.15;
-    height: 18.5px;
-  }
-  .product-table th {
-    background: transparent;
-    font-weight: bold;
-    text-align: center;
-    font-size: 7.8pt;
-    padding: 3px 2px;
-  }
-  
-  .col-sr { width: 4.5%; text-align: center; }
-  .col-desc { width: 34%; text-align: left; padding-left: 4px !important; }
-  .col-hsn { width: 10%; text-align: center; }
-  .col-qty { width: 7.5%; text-align: center; font-weight: 600; }
-  .col-unit { width: 5.5%; text-align: center; font-size: 8pt; }
-  .col-rate { width: 9%; text-align: right; padding-right: 3px !important; }
-  .col-total { width: 10.5%; text-align: right; padding-right: 3px !important; font-weight: 600; }
-  .col-taxable { width: 10%; text-align: right; padding-right: 3px !important; }
-  .col-gst { width: 9.5%; text-align: right; padding-right: 3px !important; }
-  
-  /* Inputs inside table cells */
-  .cell-input {
-    width: 100%;
+
+  /* Editable Inline Inputs */
+  .edit-field {
     border: 1px dashed transparent;
+    padding: 1px 3px;
+    border-radius: 3px;
+    outline: none;
+    transition: all 0.15s;
+    display: inline-block;
+  }
+  .edit-field:hover {
+    border-color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+  }
+  .edit-field:focus {
+    border-color: #1d4ed8;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+  .edit-input {
+    width: 100%;
+    border: 1px solid transparent;
     background: transparent;
     font-family: inherit;
-    font-size: 8.5pt;
-    color: #000;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
     padding: 1px 2px;
     outline: none;
-    transition: all 0.15s ease;
   }
-  .cell-input:hover {
+  .edit-input:hover {
     border-color: #94a3b8;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.5);
   }
-  .cell-input:focus {
-    border-color: #f59e0b;
+  .edit-input:focus {
+    border-color: #2563eb;
     background: #ffffff;
-    box-shadow: 0 0 0 1.5px rgba(245, 158, 11, 0.4);
-    border-style: solid;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
   }
-  .cell-input.text-center { text-align: center; }
-  .cell-input.text-right { text-align: right; }
-  
-  /* Bottom Tables */
-  .lower-table {
+
+  /* Items Table */
+  .items-table {
     width: 100%;
     border-collapse: collapse;
+  }
+  .items-table th, .items-table td {
+    border: 1px solid #000;
+    padding: 2.2px 3px;
+    font-size: 8.2pt;
+    line-height: 1.15;
+  }
+  .items-table th {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  .col-sr { width: 4%; text-align: center; }
+  .col-desc { width: 33%; text-align: left; }
+  .col-hsn { width: 7%; text-align: center; }
+  .col-qty { width: 9%; text-align: right; }
+  .col-unit { width: 7%; text-align: center; }
+  .col-rate { width: 9%; text-align: right; }
+  .col-total { width: 12%; text-align: right; }
+  .col-taxable { width: 9%; text-align: right; }
+  .col-gst { width: 7%; text-align: center; }
+  .col-del { width: 3%; text-align: center; }
+
+  .btn-del-row {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 9pt;
+    font-weight: bold;
+    padding: 0 2px;
+    line-height: 1;
+    border-radius: 2px;
+  }
+  .btn-del-row:hover {
+    background: #fee2e2;
+  }
+
+  .items-table tfoot td {
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+    padding: 3px 4px;
+  }
+
+  /* Lower Table */
+  .lower-table {
     border-top: 1.5px solid #000;
   }
   .lower-table td {
     vertical-align: top;
     padding: 0;
   }
-  
-  /* Tax Breakdown Table */
   .tax-table {
     width: 100%;
     border-collapse: collapse;
@@ -249,7 +467,6 @@
   .tax-table th {
     font-weight: bold;
   }
-  
   .amount-words-box {
     border-top: 1.5px solid #000;
     border-bottom: 1.5px solid #000;
@@ -257,25 +474,21 @@
     font-size: 8.5pt;
     line-height: 1.35;
   }
-  
   .bank-details-box {
     padding: 4px 8px;
     font-size: 8.5pt;
     line-height: 1.45;
   }
-  
   .terms-box {
     padding: 5px 8px;
     font-size: 8pt;
     line-height: 1.35;
   }
-  
   .signature-box {
     padding: 0 12px 8px 8px;
     text-align: right;
     font-size: 8.5pt;
   }
-  
   .footer-notice {
     border-top: 1px solid #000;
     text-align: center;
@@ -285,8 +498,73 @@
     line-height: 1.2;
   }
 
+  /* Modals for School / Vendor Editing */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .modal-backdrop.show {
+    display: flex;
+  }
+  .modal-box {
+    background: #1e293b;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #475569;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+  .modal-title {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #60a5fa;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 8px;
+  }
+  .form-group {
+    margin-bottom: 10px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 8pt;
+    color: #94a3b8;
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+  .form-control {
+    width: 100%;
+    background: #0f172a;
+    border: 1px solid #475569;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 9pt;
+    outline: none;
+  }
+  .form-control:focus {
+    border-color: #3b82f6;
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 10px;
+    border-top: 1px solid #334155;
+  }
+
+  /* Print Media Query */
   @media print {
-    .toolbar {
+    .portal-nav, .admin-panel, .col-del, .btn-del-row {
       display: none !important;
     }
     body {
@@ -294,12 +572,14 @@
     }
     .page-wrapper {
       padding: 0 !important;
+      background: none !important;
     }
     .voucher-container {
       box-shadow: none !important;
       border: 1.5px solid #000 !important;
+      width: 100% !important;
     }
-    .cell-input {
+    .edit-field, .edit-input {
       border: none !important;
       background: transparent !important;
     }
@@ -308,19 +588,101 @@
 </head>
 <body>
 
-<!-- Interactive Top Toolbar -->
-<div class="toolbar">
-  <div class="toolbar-title">
-    <span>MDM Tax Invoice Editor</span>
-    <span class="badge" id="badgeTotal">TOTAL: ₹5,148.00</span>
+<!-- Top Navigation & Status Bar -->
+<div class="portal-nav">
+  <div class="portal-brand">
+    <span class="brand-badge">MDM HEAD PORTAL</span>
+    <div>
+      <div class="brand-text-title">बिहार विद्यालय मध्याह्न भोजन (MDM) वाउचर एवं रिपोर्ट पोर्टल</div>
+      <div class="brand-text-sub">मल्टी-स्कूल एवं मल्टी-वेंडर वाउचर प्रबंधन प्रणाली | Multi-School &amp; Multi-Vendor Billing</div>
+    </div>
   </div>
-  <div class="btn-group">
-    <button class="btn btn-outline" onclick="togglePaperColor()">🎨 Toggle Yellow / White</button>
-    <button class="btn btn-outline" onclick="clearAllData()">🔄 Reset Quantities</button>
-    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+  <div class="portal-links">
+    <a href="/" class="nav-btn active">✍️ लाइव वाउचर एडिटर</a>
+    <a href="/September_2026_Detailed_MDM_Report.html" class="nav-btn">📊 सितम्बर विस्तृत रिपोर्ट</a>
+    <a href="/Yellow_Vouchers_September_2026.html" class="nav-btn">🏷️ सितम्बर वाउचर (901 छात्र)</a>
+    <a href="/Yellow_Vouchers_October_2026.html" class="nav-btn">🏷️ अक्टूबर वाउचर (602 अंडें)</a>
+    <a href="/Yellow_Voucher_4_Months.html" class="nav-btn">📑 5-माह किराना</a>
+    <a href="/Yellow_Voucher_Egg_Fruit_3_Months.html" class="nav-btn">🥚 4-माह अंडा/फल</a>
+    <a href="/September_2026_Detailed_MDM_Report.pdf" class="nav-btn pdf-btn" download>⬇️ सितम्बर रिपोर्ट PDF</a>
+    <a href="/Yellow_Vouchers_September_2026.pdf" class="nav-btn pdf-btn" download>⬇️ सितम्बर वाउचर PDF</a>
   </div>
 </div>
 
+<!-- Admin Control Center -->
+<div class="admin-panel">
+  <div class="admin-grid">
+    <!-- School Profile Selector -->
+    <div class="admin-card">
+      <div class="card-header">
+        <span class="card-title">🏫 स्कूल चुनें (School Profile)</span>
+      </div>
+      <select id="schoolSelect" class="select-styled" onchange="onSchoolSelect(this.value)"></select>
+      <div class="action-row">
+        <button class="mini-btn blue" onclick="openAddSchoolModal()">+ नई स्कूल जोड़ें</button>
+        <button class="mini-btn" onclick="openEditSchoolModal()">✏️ संपादित करें</button>
+        <button class="mini-btn" onclick="deleteCurrentSchool()" style="color:#f87171;">🗑️ हटाएं</button>
+      </div>
+    </div>
+
+    <!-- Vendor Profile Selector -->
+    <div class="admin-card">
+      <div class="card-header">
+        <span class="card-title">🏪 दुकानदार / वेंडर चुनें (Vendor Profile)</span>
+      </div>
+      <select id="vendorSelect" class="select-styled" onchange="onVendorSelect(this.value)"></select>
+      <div class="action-row">
+        <button class="mini-btn blue" onclick="openAddVendorModal()">+ नया वेंडर जोड़ें</button>
+        <button class="mini-btn" onclick="openEditVendorModal()">✏️ संपादित करें</button>
+        <button class="mini-btn" onclick="deleteCurrentVendor()" style="color:#f87171;">🗑️ हटाएं</button>
+      </div>
+    </div>
+
+    <!-- Attendance & Budget Auto-Calculator -->
+    <div class="admin-card">
+      <div class="card-header">
+        <span class="card-title">⚡ छात्र संख्या एवं बजट कैलकुलेटर</span>
+      </div>
+      <div class="calc-fields">
+        <div class="calc-input-wrap">
+          <label>वर्ग 1-5 छात्र (₹6.78)</label>
+          <input type="number" id="calcIV" class="calc-input" value="901" oninput="runCalculator()">
+        </div>
+        <div class="calc-input-wrap">
+          <label>वर्ग 6-8 छात्र (₹10.17)</label>
+          <input type="number" id="calcVI" class="calc-input" value="2682" oninput="runCalculator()">
+        </div>
+      </div>
+      <div class="calc-badges">
+        <span class="calc-tag" id="tagIV">I-V: ₹6,108.78</span>
+        <span class="calc-tag" id="tagVI">VI-VIII: ₹27,275.94</span>
+        <span class="calc-tag highlight" id="tagTotal">कुल बजट: ₹33,385.00</span>
+      </div>
+      <div class="action-row">
+        <button class="mini-btn blue" onclick="autoScaleVoucherToBudget()">⚡ वाउचर में सामग्री स्वतः भरें (Auto-Fill)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Mode & Action Bar -->
+  <div class="controls-bar">
+    <div class="mode-switch">
+      <button class="mode-tab active" id="tabGrocery" onclick="switchVoucherMode('grocery')">🛒 किराना एवं जलावन सामग्री वाउचर</button>
+      <button class="mode-tab" id="tabEgg" onclick="switchVoucherMode('egg')">🥚 अंडा / मौसमी फल वाउचर (Single Item)</button>
+    </div>
+
+    <div class="controls-actions">
+      <button class="btn-tool" onclick="addNewRow()">➕ नई सामग्री जोड़ें (+ Item)</button>
+      <button class="btn-tool" onclick="togglePaperColor()">🎨 पीला / सफेद पेपर</button>
+      <button class="btn-tool" onclick="exportDataJSON()">💾 डेटा बैकअप (JSON)</button>
+      <button class="btn-tool" onclick="document.getElementById('importFileInput').click()">📂 रीस्टोर</button>
+      <input type="file" id="importFileInput" style="display:none;" accept=".json" onchange="importDataJSON(event)">
+      <button class="btn-print" onclick="window.print()">🖨️ प्रिंट / PDF बनाएं (A4 Print)</button>
+    </div>
+  </div>
+</div>
+
+<!-- Printable Voucher Area -->
 <div class="page-wrapper">
   <div class="voucher-container" id="voucher">
     <!-- Top Header -->
@@ -328,30 +690,34 @@
       <tr>
         <td style="width: 55%; border-right: 1.5px solid #000;">
           <div style="display: flex; justify-content: space-between; font-size: 8.5pt; font-weight: bold; margin-bottom: 2px;">
-            <span>GSTIN: 10BGLPK7944K2Z3</span>
-            <span>Mob.: 9973959953</span>
+            <span>GSTIN: <span contenteditable="true" class="edit-field" id="vGstin">10BGLPK7944K2Z3</span></span>
+            <span>Mob.: <span contenteditable="true" class="edit-field" id="vMobile">9973959953</span></span>
           </div>
-          <div class="store-title">SANDEEP TRADERS</div>
+          <div class="store-title" contenteditable="true" id="vStoreName">SANDEEP TRADERS</div>
           <div class="store-details">
-            <strong>Main Road Kashichak (Nawada)</strong>, Bihar<br>
-            Deals in: Grocery, Mid Day Meal Rations, Fuel &amp; General Goods
+            <strong contenteditable="true" class="edit-field" id="vAddress">Main Road Kashichak (Nawada), Bihar</strong><br>
+            <span contenteditable="true" class="edit-field" id="vDealsIn">Deals in: Grocery, Mid Day Meal Rations, Fuel &amp; General Goods</span>
           </div>
         </td>
         <td style="width: 45%; padding-left: 9px;">
           <div class="invoice-box-title">TAX INVOICE-CUM BILL OF SUPPLY</div>
           <div class="invoice-meta">
-            <table style="width: 100%; border-collapse: collapse; font-size: 9pt;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 8.5pt;">
               <tr>
-                <td>Invoice No. 2026-27 / </td>
-                <td style="text-align: right;"><input type="text" id="invNo" style="width: 80px; text-align: right; border: none; border-bottom: 1px dotted #555; background: transparent; font-weight: bold;" value=""></td>
+                <td style="width: 42%; font-weight: bold;">Invoice No.:</td>
+                <td><input type="text" class="edit-input" style="font-weight: bold;" id="invNo" value="2026-27 / "></td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: right; padding-top: 3px;">
-                  Dated: <input type="text" id="invDate" style="width: 100px; text-align: right; border: none; border-bottom: 1px dotted #555; background: transparent; font-weight: bold;" value="3 July 2026">
-                </td>
+                <td>Dated:</td>
+                <td><input type="text" class="edit-input" style="font-weight: bold;" id="invDate" value="30 September 2026"></td>
               </tr>
               <tr>
-                <td colspan="2" style="text-align: right; padding-top: 2px;">Mode of Supply: Cash / Credit</td>
+                <td>Place of Supply:</td>
+                <td><input type="text" class="edit-input" id="vPlaceSupply" value="Bihar (10)"></td>
+              </tr>
+              <tr>
+                <td>Ref. / Month:</td>
+                <td><input type="text" class="edit-input" style="font-weight: bold;" id="vRefMonth" value="September 2026 (Ref: 1-Sep-26)"></td>
               </tr>
             </table>
           </div>
@@ -362,357 +728,125 @@
     <!-- Receiver & Scheme Box -->
     <table class="sub-header-table">
       <tr>
-        <td style="width: 53%; border-right: 1.5px solid #000;">
-          <div class="sub-header-title">DETAILS OF RECEIVER / BILLED TO:</div>
-          <table style="width: 100%; border-collapse: collapse;">
+        <td style="width: 55%; border-right: 1.5px solid #000;">
+          <div class="sub-header-title">DETAILS OF RECIPIENT (BILLED TO):</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 8.5pt;">
             <tr>
-              <td style="padding: 0; font-weight: bold; font-size: 10pt;">मध्य विद्यालय चण्डीनोवाँ</td>
-              <td style="padding: 0; text-align: right; font-size: 8.5pt;">(M.S. Chandinowan)</td>
+              <td colspan="2" style="font-weight: bold; font-size: 9.5pt;">
+                <span contenteditable="true" class="edit-field" id="vSchoolName">मध्य विद्यालय चण्डीनोवाँ</span>
+              </td>
             </tr>
-          </table>
-          <div style="margin-top: 2px;">Prakhand / Block: <strong>Kashichak</strong></div>
-          <div>District: <strong>Nawada (Bihar)</strong></div>
-          <table style="width: 100%; border-collapse: collapse; margin-top: 2px;">
             <tr>
-              <td style="padding: 0; font-weight: bold;">UDISE CODE:</td>
-              <td style="padding: 0; text-align: right; font-weight: bold; padding-right: 25px; font-size: 9.5pt;">10360400501</td>
+              <td>प्रखंड: <strong><span contenteditable="true" class="edit-field" id="vBlock">वारिसलीगंज</span></strong></td>
+              <td>जिला: <strong><span contenteditable="true" class="edit-field" id="vDistrict">नवादा (बिहार)</span></strong></td>
+            </tr>
+            <tr>
+              <td>UDISE Code: <strong><span contenteditable="true" class="edit-field" id="vUdise">10360400501</span></strong></td>
+              <td>State Code: <strong><span contenteditable="true" class="edit-field" id="vStateCode">10 (Bihar)</span></strong></td>
             </tr>
           </table>
         </td>
-        <td style="width: 47%; padding-left: 9px;">
-          <div class="sub-header-title">SCHEME / ORDER REFERENCE:</div>
-          <table style="width: 100%; border-collapse: collapse; margin-top: 2px; font-size: 8.5pt;">
-            <tr>
-              <td style="padding: 1px 0; font-weight: bold; width: 42%;">Scheme:</td>
-              <td style="padding: 1px 0; text-align: right;">Mid-Day Meal (मध्याह्न भोजन योजना)</td>
-            </tr>
-            <tr>
-              <td style="padding: 1px 0; font-weight: bold;">Purpose:</td>
-              <td style="padding: 1px 0; text-align: right;">Cooking Cost &amp; Fuel Material Purchase</td>
-            </tr>
-            <tr>
-              <td style="padding: 1px 0; font-weight: bold;">Ref:</td>
-              <td style="padding: 1px 0; text-align: right; font-weight: bold;"><input type="text" id="refOrder" style="width: 80px; text-align: right; border: none; border-bottom: 1px dotted #555; background: transparent; font-weight: bold;" value="2-Jul-26"></td>
-            </tr>
-            <tr>
-              <td style="padding: 1px 0; font-weight: bold;">Authorized by:</td>
-              <td style="padding: 1px 0; text-align: right;">Headmaster / Secretary</td>
-            </tr>
-          </table>
+        <td style="width: 45%; padding-left: 9px;">
+          <div class="sub-header-title">SCHEME / PROGRAMME DETAILS:</div>
+          <div style="font-size: 8.5pt; line-height: 1.45;">
+            <strong>PM POSHAN Scheme (Mid-Day Meal)</strong><br>
+            Purpose: <strong><span contenteditable="true" class="edit-field" id="vPurpose">Cooking Cost &amp; Fuel Material Purchase</span></strong><br>
+            Category: Primary &amp; Upper Primary (I - VIII)<br>
+            Payment Mode: Direct Bank Transfer / PFMS
+          </div>
         </td>
       </tr>
     </table>
 
-    <!-- Product Table (With HSN, Taxable Value, GST Columns having empty values) -->
-    <table class="product-table" id="itemsTable">
+    <!-- Items Table -->
+    <table class="items-table" id="itemsTable">
       <thead>
         <tr>
-          <th class="col-sr">Sr. No.</th>
-          <th class="col-desc">Description of Product (सामग्री का नाम)</th>
-          <th class="col-hsn">HNS Code</th>
-          <th class="col-qty">QTY (मात्रा)</th>
-          <th class="col-unit">UNIT (इकाई)</th>
-          <th class="col-rate">RATE (दर ₹)</th>
-          <th class="col-total">TOTAL AMOUNT (कुल राशि ₹)</th>
-          <th class="col-taxable">TAXABLE VALUE (₹)</th>
-          <th class="col-gst">GST AMT (₹)</th>
+          <th class="col-sr">Sl.</th>
+          <th class="col-desc">Description of Goods / Services</th>
+          <th class="col-hsn">HSN</th>
+          <th class="col-qty">Quantity</th>
+          <th class="col-unit">Unit</th>
+          <th class="col-rate">Rate (₹)</th>
+          <th class="col-total">Amount (₹)</th>
+          <th class="col-taxable">Taxable Val</th>
+          <th class="col-gst">GST Rate</th>
+          <th class="col-del"></th>
         </tr>
       </thead>
-      <tbody>
-        <tr data-row="1">
-          <td class="col-sr">1</td>
-          <td class="col-desc">हल्दी पाउडर (Haldi Powder)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="1.200" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="240.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="2">
-          <td class="col-sr">2</td>
-          <td class="col-desc">धनिया पाउडर (Coriander Powder)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="0.650" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="260.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="3">
-          <td class="col-sr">3</td>
-          <td class="col-desc">मिक्स मसाला (Mix Masala)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="0.450" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="250.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="4">
-          <td class="col-sr">4</td>
-          <td class="col-desc">लाल मिर्च पाउडर (Red Chili Powder)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="0.082" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="300.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="5">
-          <td class="col-sr">5</td>
-          <td class="col-desc">सरसों तेल (Mustard Oil- Scooter/Mahatma)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="3.750" oninput="calculateRow(this)"></td>
-          <td class="col-unit">Lit</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="180.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="6">
-          <td class="col-sr">6</td>
-          <td class="col-desc">किम नॉन सोयाबड़ी (Soya Chunks)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="5.055" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="120.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="7">
-          <td class="col-sr">7</td>
-          <td class="col-desc">चना दाल (Chana Dal)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="2.453" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="90.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="8">
-          <td class="col-sr">8</td>
-          <td class="col-desc">मूंग दाल (Moong Dal)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="2.453" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="140.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="9">
-          <td class="col-sr">9</td>
-          <td class="col-desc">मसूर दाल (Masoor Dal)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="2.454" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="90.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="10">
-          <td class="col-sr">10</td>
-          <td class="col-desc">लाल चना (Red Chana)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="11.855" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="85.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="11">
-          <td class="col-sr">11</td>
-          <td class="col-desc">आलू (Potato)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="10.000" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="12.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="12">
-          <td class="col-sr">12</td>
-          <td class="col-desc">प्याज (Onion)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="3.000" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="31.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="13">
-          <td class="col-sr">13</td>
-          <td class="col-desc">कद्दू (Pumpkin)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="4.000" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="20.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="14">
-          <td class="col-sr">14</td>
-          <td class="col-desc">झिंगा / नेनुआ (Vegetables)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="2.000" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="15.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="15">
-          <td class="col-sr">15</td>
-          <td class="col-desc">टमाटर (Tomato)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="2.145" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="25.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="16">
-          <td class="col-sr">16</td>
-          <td class="col-desc">सूखी मिर्च (Dry Chilli)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="0.200" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="80.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="17">
-          <td class="col-sr">17</td>
-          <td class="col-desc">जीरा (Cumin)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="0.100" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="100.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="18">
-          <td class="col-sr">18</td>
-          <td class="col-desc">नमक (Salt)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="2.500" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="15.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <tr data-row="19">
-          <td class="col-sr">19</td>
-          <td class="col-desc">जलावन (Firewood / Fuel)</td>
-          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
-          <td class="col-qty"><input type="number" step="any" class="cell-input text-center qty" value="86.620" oninput="calculateRow(this)"></td>
-          <td class="col-unit">KG</td>
-          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="12.00" oninput="calculateRow(this)"></td>
-          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
-          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
-          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
-        </tr>
-        <!-- Total Row -->
-        <tr style="font-weight: bold; background: rgba(0,0,0,0.02);">
-          <td colspan="6" style="text-align: right; padding-right: 8px; font-size: 9pt;">
-            TOTAL GROSS AMOUNT / NET PAYABLE :
-          </td>
-          <td class="col-total"><input type="text" id="grandTotal" class="cell-input text-right" style="font-weight: 900; font-size: 10pt;" readonly></td>
+      <tbody id="itemsBody">
+        <!-- Rendered dynamically -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6" style="text-align: right; font-weight: bold; padding-right: 8px;">GRAND TOTAL / NET PAYABLE:</td>
+          <td class="col-total" id="grandTotalCell" style="font-weight: 900; font-size: 9.5pt; text-align: right;">₹ 0.00</td>
           <td class="col-taxable"></td>
           <td class="col-gst"></td>
+          <td class="col-del"></td>
         </tr>
-      </tbody>
+      </tfoot>
     </table>
 
-    <!-- Lower Split Section -->
+    <!-- Lower Blocks (Tax, Bank, Terms, Signature) -->
     <table class="lower-table">
       <tr>
         <!-- Lower Left -->
-        <td style="width: 53%; border-right: 1.5px solid #000;">
-          <!-- Tax Table with Empty Values -->
+        <td style="width: 55%; border-right: 1.5px solid #000;">
           <table class="tax-table">
             <thead>
               <tr>
-                <th rowspan="2" style="width: 32%;">Hsin / SAC</th>
-                <th rowspan="2" style="width: 17%;">Taxable Value</th>
-                <th colspan="2" style="width: 25%;">CGST @</th>
-                <th colspan="2" style="width: 25%;">SGST @</th>
-                <th rowspan="2" style="width: 18%;">Total Tax<br>Amount (₹)</th>
-              </tr>
-              <tr>
-                <th style="font-size: 7pt; width: 10%;">Rate</th>
-                <th style="font-size: 7pt; width: 15%;">Amount (₹)</th>
-                <th style="font-size: 7pt; width: 10%;">Rate</th>
-                <th style="font-size: 7pt; width: 15%;">Amount (₹)</th>
+                <th>Tax Type</th>
+                <th>Rate</th>
+                <th>Taxable Amt</th>
+                <th>CGST (₹)</th>
+                <th>SGST (₹)</th>
+                <th>Total Tax</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="font-size: 7.5pt; text-align: left; padding-left: 3px;">Various</td>
+                <td>GST / Exempt</td>
+                <td>0.00%</td>
                 <td></td>
-                <td>2.50%</td>
                 <td></td>
-                <td>2.50%</td>
                 <td></td>
                 <td></td>
               </tr>
               <tr style="font-weight: bold;">
-                <td style="text-align: right; padding-right: 4px;">Total Tax</td>
+                <td colspan="2">TOTAL TAX</td>
                 <td></td>
-                <td>-</td>
                 <td></td>
-                <td>-</td>
                 <td></td>
                 <td></td>
               </tr>
             </tbody>
           </table>
 
-          <!-- Amount Chargeable In Words -->
           <div class="amount-words-box">
-            <div style="font-weight: bold; font-size: 8pt; margin-bottom: 2px;">AMOUNT CHARGEABLE (IN WORDS) :</div>
-            <div style="font-size: 8.5pt; font-weight: bold;">
-              <input type="text" id="amountWords" class="cell-input" style="font-weight: bold; font-size: 8.5pt;" readonly value="INR FIVE THOUSAND ONE HUNDRED AND FORTY EIGHT ONLY">
-            </div>
+            <strong>Amount in Words:</strong><br>
+            <span id="amountWordsText" style="font-weight: 600;">INR ZERO ONLY</span>
           </div>
 
-          <!-- Vendor Bank Details -->
           <div class="bank-details-box">
-            <div style="font-weight: bold; font-size: 8.5pt; text-decoration: underline; margin-bottom: 3px;">Vendor Bank Details</div>
-            <div><strong style="display:inline-block; width: 115px;">A/c Holder Name</strong>: <strong>DINESH KUMAR</strong></div>
-            <div><strong style="display:inline-block; width: 115px;">Bank Name</strong>: <strong>P.N.B. CHANDI NUWAN (Nawada)</strong></div>
-            <div><strong style="display:inline-block; width: 115px;">A/c No.</strong>: <strong style="font-size: 9.5pt; letter-spacing: 0.5px;">7840002100000312</strong></div>
-            <div><strong style="display:inline-block; width: 115px;">Branch &amp; IFSC Code</strong>: <strong>PUNB0784000</strong></div>
+            <strong>Bank Details:</strong> <span contenteditable="true" class="edit-field" id="vBankName">Bank of Baroda</span> | A/C: <strong><span contenteditable="true" class="edit-field" id="vAccountNo">38240200000215</span></strong><br>
+            IFSC: <strong><span contenteditable="true" class="edit-field" id="vIfsc">BARB0WARISL</span></strong> | Branch: <span contenteditable="true" class="edit-field" id="vBranch">Warisaliganj, Nawada</span>
           </div>
         </td>
 
         <!-- Lower Right -->
-        <td style="width: 47%; padding: 4px 8px; vertical-align: top;">
-          <div class="terms-box">
+        <td style="width: 45%; padding: 4px 8px; vertical-align: top;">
+          <div class="terms-box" id="termsBox">
             <div style="font-weight: bold; font-size: 8pt; margin-bottom: 2px;">Terms &amp; Conditions:</div>
-            <div>1. Goods once sold will not be taken back.</div>
-            <div>2. All disputes are subject to Nawada jurisdiction.</div>
-            <div>3. Certified that particulars given above are true and correct.</div>
+            <div contenteditable="true" class="edit-field" id="vTerms">
+              <div>1. Goods once sold will not be taken back.</div>
+              <div>2. All disputes are subject to <span id="vJurisdiction">Nawada</span> jurisdiction.</div>
+              <div>3. Certified that particulars given above are true and correct.</div>
+            </div>
           </div>
 
-          <div class="signature-box" style="margin-top: 18px;">
-            <div style="font-weight: bold; font-size: 8.5pt; text-align: right;">For SANDEEP TRADERS</div>
+          <div class="signature-box" style="margin-top: 14px;">
+            <div style="font-weight: bold; font-size: 8.5pt; text-align: right;">For <span id="vSigStoreName">SANDEEP TRADERS</span></div>
             <div style="height: 48px;"></div>
             <div style="text-align: right; font-weight: bold; font-size: 8.5pt; line-height: 1.25;">
               Authorised Signatory<br>
@@ -725,91 +859,666 @@
 
     <!-- Bottom Notice -->
     <div class="footer-notice">
-      This is a Computer Generated Tax Invoice - Cum Bill of Supply No Signature Required for Digital Clearance.
+      This is a computer generated invoice and serves as official bill of supply for Mid-Day Meal records.
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Add/Edit School -->
+<div class="modal-backdrop" id="schoolModal">
+  <div class="modal-box">
+    <div class="modal-title" id="schoolModalTitle">स्कूल जोड़ें / संपादित करें</div>
+    <div class="form-group">
+      <label>स्कूल का नाम (School Name):</label>
+      <input type="text" class="form-control" id="mSchoolName" placeholder="उदा. मध्य विद्यालय चण्डीनोवाँ">
+    </div>
+    <div class="form-group">
+      <label>प्रखंड / Block:</label>
+      <input type="text" class="form-control" id="mSchoolBlock" placeholder="उदा. वारिसलीगंज">
+    </div>
+    <div class="form-group">
+      <label>जिला / District:</label>
+      <input type="text" class="form-control" id="mSchoolDistrict" placeholder="उदा. नवादा (बिहार)">
+    </div>
+    <div class="form-group">
+      <label>UDISE Code:</label>
+      <input type="text" class="form-control" id="mSchoolUdise" placeholder="उदा. 10360400501">
+    </div>
+    <div class="form-group">
+      <label>State Code:</label>
+      <input type="text" class="form-control" id="mSchoolState" value="10 (Bihar)">
+    </div>
+    <div class="modal-footer">
+      <button class="mini-btn" onclick="closeSchoolModal()">रद्द करें</button>
+      <button class="mini-btn blue" onclick="saveSchoolModal()">सुरक्षित करें (Save)</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Add/Edit Vendor -->
+<div class="modal-backdrop" id="vendorModal">
+  <div class="modal-box">
+    <div class="modal-title" id="vendorModalTitle">वेंडर / दुकान विवरण जोड़ें / संपादित करें</div>
+    <div class="form-group">
+      <label>दुकान का नाम (Shop Name):</label>
+      <input type="text" class="form-control" id="mVendorName" placeholder="उदा. SANDEEP TRADERS">
+    </div>
+    <div class="form-group">
+      <label>GSTIN / UIN:</label>
+      <input type="text" class="form-control" id="mVendorGstin" placeholder="उदा. 10BGLPK7944K2Z3">
+    </div>
+    <div class="form-group">
+      <label>मोबाइल नंबर (Mobile No.):</label>
+      <input type="text" class="form-control" id="mVendorMobile" placeholder="उदा. 9973959953">
+    </div>
+    <div class="form-group">
+      <label>पता (Address):</label>
+      <input type="text" class="form-control" id="mVendorAddress" placeholder="उदा. Main Road Kashichak (Nawada)">
+    </div>
+    <div class="form-group">
+      <label>Deals In / कार्य विवरण:</label>
+      <input type="text" class="form-control" id="mVendorDeals" value="Deals in: Grocery, Mid Day Meal Rations, Fuel & General Goods">
+    </div>
+    <div class="form-group">
+      <label>बैंक का नाम (Bank Name):</label>
+      <input type="text" class="form-control" id="mVendorBank" placeholder="उदा. Bank of Baroda">
+    </div>
+    <div class="form-group">
+      <label>खाता संख्या (A/C No.):</label>
+      <input type="text" class="form-control" id="mVendorAcc" placeholder="उदा. 38240200000215">
+    </div>
+    <div class="form-group">
+      <label>IFSC Code:</label>
+      <input type="text" class="form-control" id="mVendorIfsc" placeholder="उदा. BARB0WARISL">
+    </div>
+    <div class="form-group">
+      <label>शाखा (Branch):</label>
+      <input type="text" class="form-control" id="mVendorBranch" placeholder="उदा. Warisaliganj, Nawada">
+    </div>
+    <div class="form-group">
+      <label>Jurisdiction (न्यायालय क्षेत्र):</label>
+      <input type="text" class="form-control" id="mVendorJurisdiction" placeholder="उदा. Nawada">
+    </div>
+    <div class="modal-footer">
+      <button class="mini-btn" onclick="closeVendorModal()">रद्द करें</button>
+      <button class="mini-btn blue" onclick="saveVendorModal()">सुरक्षित करें (Save)</button>
     </div>
   </div>
 </div>
 
 <script>
-  function togglePaperColor() {
-    const v = document.getElementById('voucher');
-    v.classList.toggle('white-paper');
+// --- Data Stores ---
+const defaultSchools = [
+  {
+    id: "sch_1",
+    name: "मध्य विद्यालय चण्डीनोवाँ",
+    block: "वारिसलीगंज",
+    district: "नवादा (बिहार)",
+    udise: "10360400501",
+    state: "10 (Bihar)"
+  },
+  {
+    id: "sch_2",
+    name: "उ० म० वि० टेकभे",
+    block: "Ghalladh",
+    district: "मधेपुरा, Bihar",
+    udise: "10110901101",
+    state: "10 (Bihar)"
   }
+];
 
-  function calculateRow(elem) {
-    const row = elem.closest('tr');
-    const qty = parseFloat(row.querySelector('.qty').value) || 0;
-    const rate = parseFloat(row.querySelector('.rate').value) || 0;
-    const totalElem = row.querySelector('.total');
-    
-    if (qty > 0 && rate > 0) {
-      const lineTotal = qty * rate;
-      totalElem.value = lineTotal.toFixed(2);
-    } else {
-      totalElem.value = '';
-    }
-    calculateTotals();
+const defaultVendors = [
+  {
+    id: "ven_1",
+    name: "SANDEEP TRADERS",
+    gstin: "10BGLPK7944K2Z3",
+    mobile: "9973959953",
+    address: "Main Road Kashichak (Nawada), Bihar",
+    deals: "Deals in: Grocery, Mid Day Meal Rations, Fuel & General Goods",
+    bank: "Bank of Baroda",
+    acc: "38240200000215",
+    ifsc: "BARB0WARISL",
+    branch: "Warisaliganj, Nawada",
+    jurisdiction: "Nawada"
+  },
+  {
+    id: "ven_2",
+    name: "M/S GANPATI KIRANA & GENTAL STORE",
+    gstin: "10AIVPY1719P1ZH",
+    mobile: "+917781071351",
+    address: "College Chowk NH-106, Madhepura, Distt- Madhepura, PIN-852113",
+    deals: "Deals in: Grocery, Mid Day Meal Rations, Fuel & General Stores",
+    bank: "Punjab National Bank",
+    acc: "7840002100000312",
+    ifsc: "PUNB0784000",
+    branch: "College Chowk, Madhepura",
+    jurisdiction: "Madhepura"
   }
+];
 
-  function calculateTotals() {
-    let grandTotal = 0;
-    const rows = document.querySelectorAll('#itemsTable tbody tr[data-row]');
-    rows.forEach(row => {
-      const tot = parseFloat(row.querySelector('.total').value) || 0;
-      grandTotal += tot;
-    });
+const standardGroceryItems = [
+  { name: 'हल्दी पाउडर (Haldi Powder)', qty: 4.036, unit: 'KG', rate: 250 },
+  { name: 'धनिया पाउडर (Coriander Powder)', qty: 2.421, unit: 'KG', rate: 175 },
+  { name: 'मिक्स मसाला (Mix Masala)', qty: 1.615, unit: 'KG', rate: 340 },
+  { name: 'लाल मिर्च पाउडर (Red Chili Powder)', qty: 0.807, unit: 'KG', rate: 300 },
+  { name: 'सरसों तेल (Mustard Oil)', qty: 23.981, unit: 'Lit', rate: 190 },
+  { name: 'सोया बड़ी (Soya Chunks)', qty: 35.900, unit: 'KG', rate: 92 },
+  { name: 'चना दाल (Chana Dal)', qty: 15.130, unit: 'KG', rate: 100 },
+  { name: 'मूंग दाल (Moong Dal)', qty: 15.130, unit: 'KG', rate: 100 },
+  { name: 'मसूर दाल (Masoor Dal)', qty: 15.130, unit: 'KG', rate: 100 },
+  { name: 'लाल चना (Red Chana)', qty: 60.907, unit: 'KG', rate: 90 },
+  { name: 'आलू (Potato)', qty: 76.560, unit: 'KG', rate: 30 },
+  { name: 'प्याज (Onion)', qty: 18.269, unit: 'KG', rate: 39 },
+  { name: 'कद्दू (Pumpkin)', qty: 18.269, unit: 'KG', rate: 39 },
+  { name: 'झिंगा / नेनुआ (Vegetables)', qty: 18.268, unit: 'KG', rate: 39 },
+  { name: 'टमाटर (Tomato)', qty: 18.268, unit: 'KG', rate: 39 },
+  { name: 'सूखी मिर्च (Dry Chilli)', qty: 0.807, unit: 'KG', rate: 250 },
+  { name: 'जीरा (Cumin)', qty: 0.808, unit: 'KG', rate: 490 },
+  { name: 'नमक (Salt)', qty: 5.654, unit: 'KG', rate: 15 },
+  { name: 'जलावन (Firewood / Fuel)', qty: 532.296, unit: 'KG', rate: 14 }
+];
 
-    if (grandTotal > 0) {
-      document.getElementById('grandTotal').value = grandTotal.toFixed(2);
-      document.getElementById('badgeTotal').textContent = 'TOTAL: ₹' + grandTotal.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-      document.getElementById('amountWords').value = 'INR ' + numberToWords(Math.round(grandTotal)) + ' ONLY';
-    } else {
-      document.getElementById('grandTotal').value = '';
-      document.getElementById('badgeTotal').textContent = 'TOTAL: ₹0.00';
-      document.getElementById('amountWords').value = '';
-    }
-  }
+let schools = JSON.parse(localStorage.getItem('mdm_schools')) || defaultSchools;
+let vendors = JSON.parse(localStorage.getItem('mdm_vendors')) || defaultVendors;
+let currentSchoolId = schools[0].id;
+let currentVendorId = vendors[0].id;
+let voucherMode = 'grocery'; // 'grocery' or 'egg'
+let activeEditSchoolId = null;
+let activeEditVendorId = null;
 
-  function clearAllData() {
-    if (confirm('Clear all entered quantities and reset amounts?')) {
-      document.querySelectorAll('#itemsTable tbody tr[data-row]').forEach(row => {
-        row.querySelector('.qty').value = '';
-        row.querySelector('.total').value = '';
-      });
-      document.getElementById('invNo').value = '';
-      calculateTotals();
-    }
-  }
+// --- Initialize UI ---
+function init() {
+  populateSchoolDropdown();
+  populateVendorDropdown();
+  applySchool(currentSchoolId);
+  applyVendor(currentVendorId);
+  renderItemsTable(standardGroceryItems);
+  runCalculator();
 
-  function numberToWords(n) {
-    if (n === 0) return 'ZERO';
-    const a = ['', 'ONE ', 'TWO ', 'THREE ', 'FOUR ', 'FIVE ', 'SIX ', 'SEVEN ', 'EIGHT ', 'NINE ', 'TEN ', 'ELEVEN ', 'TWELVE ', 'THIRTEEN ', 'FOURTEEN ', 'FIFTEEN ', 'SIXTEEN ', 'SEVENTEEN ', 'EIGHTEEN ', 'NINETEEN '];
-    const b = ['', '', 'TWENTY', 'THIRTY', 'FORTY', 'FIFTY', 'SIXTY', 'SEVENTY', 'EIGHTY', 'NINETY'];
-    function inWords(num) {
-      if ((num = num.toString()).length > 9) return 'overflow';
-      const n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
-      if (!n) return '';
-      let str = '';
-      str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'CRORE ' : '';
-      str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'LAKH ' : '';
-      str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'THOUSAND ' : '';
-      str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'HUNDRED ' : '';
-      str += (n[5] != 0) ? ((str != '') ? 'AND ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
-      return str.trim();
-    }
-    return inWords(n);
-  }
-
-  // Initial calculation on load
-  window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('#itemsTable tbody tr[data-row]').forEach(row => {
-      const qtyInput = row.querySelector('.qty');
-      if (qtyInput && qtyInput.value) {
-        calculateRow(qtyInput);
-      }
-    });
-    calculateTotals();
+  // Watch store name edits to sync with signature box
+  document.getElementById('vStoreName').addEventListener('input', (e) => {
+    document.getElementById('vSigStoreName').textContent = e.target.textContent;
   });
+}
+
+function populateSchoolDropdown() {
+  const sel = document.getElementById('schoolSelect');
+  sel.innerHTML = '';
+  schools.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s.id;
+    opt.textContent = `${s.name} (${s.udise})`;
+    sel.appendChild(opt);
+  });
+  sel.value = currentSchoolId;
+}
+
+function populateVendorDropdown() {
+  const sel = document.getElementById('vendorSelect');
+  sel.innerHTML = '';
+  vendors.forEach(v => {
+    const opt = document.createElement('option');
+    opt.value = v.id;
+    opt.textContent = `${v.name} (${v.gstin || 'No GST'})`;
+    sel.appendChild(opt);
+  });
+  sel.value = currentVendorId;
+}
+
+function onSchoolSelect(id) {
+  currentSchoolId = id;
+  applySchool(id);
+}
+
+function applySchool(id) {
+  const s = schools.find(x => x.id === id) || schools[0];
+  document.getElementById('vSchoolName').textContent = s.name;
+  document.getElementById('vBlock').textContent = s.block;
+  document.getElementById('vDistrict').textContent = s.district;
+  document.getElementById('vUdise').textContent = s.udise;
+  document.getElementById('vStateCode').textContent = s.state;
+}
+
+function onVendorSelect(id) {
+  currentVendorId = id;
+  applyVendor(id);
+}
+
+function applyVendor(id) {
+  const v = vendors.find(x => x.id === id) || vendors[0];
+  document.getElementById('vStoreName').textContent = v.name;
+  document.getElementById('vSigStoreName').textContent = v.name;
+  document.getElementById('vGstin').textContent = v.gstin;
+  document.getElementById('vMobile').textContent = v.mobile;
+  document.getElementById('vAddress').textContent = v.address;
+  document.getElementById('vDealsIn').textContent = v.deals;
+  document.getElementById('vBankName').textContent = v.bank;
+  document.getElementById('vAccountNo').textContent = v.acc;
+  document.getElementById('vIfsc').textContent = v.ifsc;
+  document.getElementById('vBranch').textContent = v.branch;
+  document.getElementById('vJurisdiction').textContent = v.jurisdiction || 'Nawada';
+}
+
+// --- Voucher Mode Switching (Grocery vs Egg) ---
+function switchVoucherMode(mode) {
+  voucherMode = mode;
+  document.getElementById('tabGrocery').classList.toggle('active', mode === 'grocery');
+  document.getElementById('tabEgg').classList.toggle('active', mode === 'egg');
+
+  if (mode === 'egg') {
+    document.getElementById('vPurpose').textContent = 'Egg & Seasonal Fruit Procurement (अंडा / फल सामग्री क्रय)';
+    const eggCount = 327;
+    const eggItems = [
+      { name: 'अंडा / फल (Egg / Fruit)', qty: eggCount, unit: 'PCS', rate: 5.00 }
+    ];
+    renderItemsTable(eggItems, true);
+    document.getElementById('vTerms').innerHTML = `
+      <div>1. Fresh &amp; nutritious eggs / seasonal fruits supplied as per MDM norms.</div>
+      <div>2. Goods once delivered and verified will not be returned.</div>
+      <div>3. Certified that particulars given above are true and correct.</div>
+    `;
+  } else {
+    document.getElementById('vPurpose').textContent = 'Cooking Cost & Fuel Material Purchase';
+    renderItemsTable(standardGroceryItems);
+    document.getElementById('vTerms').innerHTML = `
+      <div>1. Goods once sold will not be taken back.</div>
+      <div>2. All disputes are subject to <span id="vJurisdiction">${vendors.find(x=>x.id===currentVendorId)?.jurisdiction || 'Nawada'}</span> jurisdiction.</div>
+      <div>3. Certified that particulars given above are true and correct.</div>
+    `;
+  }
+}
+
+// --- Render Table Rows ---
+function renderItemsTable(items, addBlanks = false) {
+  const tbody = document.getElementById('itemsBody');
+  tbody.innerHTML = '';
+  items.forEach((it, idx) => {
+    tbody.appendChild(createRow(idx + 1, it.name, it.qty, it.unit, it.rate));
+  });
+
+  if (addBlanks) {
+    for (let i = 0; i < 12; i++) {
+      const tr = document.createElement('tr');
+      tr.className = 'empty-row';
+      tr.innerHTML = `
+        <td class="col-sr">&nbsp;</td>
+        <td class="col-desc">&nbsp;</td>
+        <td class="col-hsn">&nbsp;</td>
+        <td class="col-qty">&nbsp;</td>
+        <td class="col-unit">&nbsp;</td>
+        <td class="col-rate">&nbsp;</td>
+        <td class="col-total">&nbsp;</td>
+        <td class="col-taxable">&nbsp;</td>
+        <td class="col-gst">&nbsp;</td>
+        <td class="col-del"></td>
+      `;
+      tbody.appendChild(tr);
+    }
+  }
+  calculateAll();
+}
+
+function createRow(sr, name = '', qty = '', unit = 'KG', rate = '') {
+  const tr = document.createElement('tr');
+  tr.setAttribute('data-item-row', 'true');
+  tr.innerHTML = `
+    <td class="col-sr">${sr}</td>
+    <td class="col-desc"><input type="text" class="edit-input item-name" value="${name}"></td>
+    <td class="col-hsn"><input type="text" class="edit-input text-center item-hsn" value=""></td>
+    <td class="col-qty"><input type="number" step="any" class="edit-input text-right item-qty" value="${qty}" oninput="calcRow(this)"></td>
+    <td class="col-unit"><input type="text" class="edit-input text-center item-unit" value="${unit}"></td>
+    <td class="col-rate"><input type="number" step="any" class="edit-input text-right item-rate" value="${rate}" oninput="calcRow(this)"></td>
+    <td class="col-total"><input type="text" class="edit-input text-right item-total" readonly></td>
+    <td class="col-taxable"><input type="text" class="edit-input text-right item-taxable" value=""></td>
+    <td class="col-gst"><input type="text" class="edit-input text-center item-gst" value=""></td>
+    <td class="col-del"><button class="btn-del-row" onclick="deleteRow(this)" title="हटाएं">×</button></td>
+  `;
+  return tr;
+}
+
+function addNewRow() {
+  const tbody = document.getElementById('itemsBody');
+  const rows = tbody.querySelectorAll('tr[data-item-row]');
+  const newSr = rows.length + 1;
+  const newRow = createRow(newSr, '', '', 'KG', '');
+  tbody.appendChild(newRow);
+  newRow.querySelector('.item-name').focus();
+}
+
+function deleteRow(btn) {
+  const row = btn.closest('tr');
+  row.remove();
+  renumberRows();
+  calculateAll();
+}
+
+function renumberRows() {
+  const rows = document.querySelectorAll('#itemsBody tr[data-item-row]');
+  rows.forEach((r, idx) => {
+    r.querySelector('.col-sr').textContent = idx + 1;
+  });
+}
+
+function calcRow(input) {
+  const tr = input.closest('tr');
+  const qty = parseFloat(tr.querySelector('.item-qty').value) || 0;
+  const rate = parseFloat(tr.querySelector('.item-rate').value) || 0;
+  const totalInput = tr.querySelector('.item-total');
+  if (qty > 0 && rate > 0) {
+    totalInput.value = (qty * rate).toFixed(2);
+  } else {
+    totalInput.value = '';
+  }
+  calculateAll();
+}
+
+function calculateAll() {
+  let grandTotal = 0;
+  const rows = document.querySelectorAll('#itemsBody tr[data-item-row]');
+  rows.forEach(tr => {
+    const qty = parseFloat(tr.querySelector('.item-qty').value) || 0;
+    const rate = parseFloat(tr.querySelector('.item-rate').value) || 0;
+    const totalInput = tr.querySelector('.item-total');
+    if (qty > 0 && rate > 0) {
+      const lineTotal = +(qty * rate).toFixed(2);
+      totalInput.value = lineTotal.toFixed(2);
+      grandTotal += lineTotal;
+    } else {
+      totalInput.value = '';
+    }
+  });
+
+  const grandCell = document.getElementById('grandTotalCell');
+  const wordsSpan = document.getElementById('amountWordsText');
+
+  if (grandTotal > 0) {
+    grandCell.textContent = '₹ ' + grandTotal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    wordsSpan.textContent = 'INR ' + numberToWords(Math.round(grandTotal)) + ' ONLY';
+  } else {
+    grandCell.textContent = '₹ 0.00';
+    wordsSpan.textContent = 'INR ZERO ONLY';
+  }
+}
+
+// --- Attendance & Budget Calculator ---
+function runCalculator() {
+  const iv = parseInt(document.getElementById('calcIV').value) || 0;
+  const vi = parseInt(document.getElementById('calcVI').value) || 0;
+  const costIV = +(iv * 6.78).toFixed(2);
+  const costVI = +(vi * 10.17).toFixed(2);
+  const grand = Math.round(costIV + costVI);
+
+  document.getElementById('tagIV').textContent = `I-V: ₹${costIV.toLocaleString('en-IN', {minimumFractionDigits: 2})}`;
+  document.getElementById('tagVI').textContent = `VI-VIII: ₹${costVI.toLocaleString('en-IN', {minimumFractionDigits: 2})}`;
+  document.getElementById('tagTotal').textContent = `कुल बजट: ₹${grand.toLocaleString('en-IN')}.00`;
+}
+
+function autoScaleVoucherToBudget() {
+  const iv = parseInt(document.getElementById('calcIV').value) || 0;
+  const vi = parseInt(document.getElementById('calcVI').value) || 0;
+  const totalStudents = iv + vi;
+  if (totalStudents <= 0) {
+    alert('कृपया छात्र संख्या दर्ज करें!');
+    return;
+  }
+
+  const targetBudget = Math.round(iv * 6.78 + vi * 10.17);
+  // Scale based on reference September 3,583 students = ₹33,385
+  const scale = targetBudget / 33385.00;
+
+  const scaledItems = standardGroceryItems.map(it => {
+    let newQty;
+    if (it.name.includes('जलावन')) {
+      newQty = +(it.qty * scale).toFixed(3);
+    } else {
+      newQty = +(it.qty * scale).toFixed(3);
+    }
+    return {
+      name: it.name,
+      qty: newQty,
+      unit: it.unit,
+      rate: it.rate
+    };
+  });
+
+  // Balance fuel so exact grand total matches targetBudget
+  let nonFuelSum = 0;
+  scaledItems.slice(0, 18).forEach(it => {
+    nonFuelSum += +(it.qty * it.rate).toFixed(2);
+  });
+  const neededFuelCost = +(targetBudget - nonFuelSum).toFixed(2);
+  scaledItems[18].qty = +(neededFuelCost / 14).toFixed(3);
+
+  renderItemsTable(scaledItems);
+}
+
+// --- Number to Words ---
+function numberToWords(n) {
+  if (n === 0) return 'ZERO';
+  const a = ['', 'ONE ', 'TWO ', 'THREE ', 'FOUR ', 'FIVE ', 'SIX ', 'SEVEN ', 'EIGHT ', 'NINE ', 'TEN ', 'ELEVEN ', 'TWELVE ', 'THIRTEEN ', 'FOURTEEN ', 'FIFTEEN ', 'SIXTEEN ', 'SEVENTEEN ', 'EIGHTEEN ', 'NINETEEN '];
+  const b = ['', '', 'TWENTY', 'THIRTY', 'FORTY', 'FIFTY', 'SIXTY', 'SEVENTY', 'EIGHTY', 'NINETY'];
+  function inWords(num) {
+    if ((num = num.toString()).length > 9) return 'OVERFLOW';
+    const n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+    if (!n) return '';
+    let str = '';
+    str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'CRORE ' : '';
+    str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'LAKH ' : '';
+    str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'THOUSAND ' : '';
+    str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'HUNDRED ' : '';
+    str += (n[5] != 0) ? ((str != '') ? 'AND ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
+    return str.trim();
+  }
+  return inWords(n);
+}
+
+// --- Paper Color Toggle ---
+function togglePaperColor() {
+  document.getElementById('voucher').classList.toggle('white-paper');
+}
+
+// --- School Modals & CRUD ---
+function openAddSchoolModal() {
+  activeEditSchoolId = null;
+  document.getElementById('schoolModalTitle').textContent = '+ नई स्कूल जोड़ें (Add New School)';
+  document.getElementById('mSchoolName').value = '';
+  document.getElementById('mSchoolBlock').value = '';
+  document.getElementById('mSchoolDistrict').value = '';
+  document.getElementById('mSchoolUdise').value = '';
+  document.getElementById('mSchoolState').value = '10 (Bihar)';
+  document.getElementById('schoolModal').classList.add('show');
+}
+
+function openEditSchoolModal() {
+  const s = schools.find(x => x.id === currentSchoolId);
+  if (!s) return;
+  activeEditSchoolId = s.id;
+  document.getElementById('schoolModalTitle').textContent = '✏️ स्कूल विवरण संपादित करें (Edit School)';
+  document.getElementById('mSchoolName').value = s.name;
+  document.getElementById('mSchoolBlock').value = s.block;
+  document.getElementById('mSchoolDistrict').value = s.district;
+  document.getElementById('mSchoolUdise').value = s.udise;
+  document.getElementById('mSchoolState').value = s.state;
+  document.getElementById('schoolModal').classList.add('show');
+}
+
+function closeSchoolModal() {
+  document.getElementById('schoolModal').classList.remove('show');
+}
+
+function saveSchoolModal() {
+  const name = document.getElementById('mSchoolName').value.trim();
+  const block = document.getElementById('mSchoolBlock').value.trim();
+  const district = document.getElementById('mSchoolDistrict').value.trim();
+  const udise = document.getElementById('mSchoolUdise').value.trim();
+  const state = document.getElementById('mSchoolState').value.trim();
+
+  if (!name || !udise) {
+    alert('स्कूल का नाम और UDISE कोड अनिवार्य है!');
+    return;
+  }
+
+  if (activeEditSchoolId) {
+    const s = schools.find(x => x.id === activeEditSchoolId);
+    s.name = name; s.block = block; s.district = district; s.udise = udise; s.state = state;
+  } else {
+    const newId = 'sch_' + Date.now();
+    schools.push({ id: newId, name, block, district, udise, state });
+    currentSchoolId = newId;
+  }
+  localStorage.setItem('mdm_schools', JSON.stringify(schools));
+  populateSchoolDropdown();
+  applySchool(currentSchoolId);
+  closeSchoolModal();
+}
+
+function deleteCurrentSchool() {
+  if (schools.length <= 1) {
+    alert('कम से कम एक स्कूल होना अनिवार्य है!');
+    return;
+  }
+  if (confirm(`क्या आप स्कूल "${schools.find(x=>x.id===currentSchoolId)?.name}" को हटाना चाहते हैं?`)) {
+    schools = schools.filter(x => x.id !== currentSchoolId);
+    currentSchoolId = schools[0].id;
+    localStorage.setItem('mdm_schools', JSON.stringify(schools));
+    populateSchoolDropdown();
+    applySchool(currentSchoolId);
+  }
+}
+
+// --- Vendor Modals & CRUD ---
+function openAddVendorModal() {
+  activeEditVendorId = null;
+  document.getElementById('vendorModalTitle').textContent = '+ नया वेंडर जोड़ें (Add New Vendor)';
+  document.getElementById('mVendorName').value = '';
+  document.getElementById('mVendorGstin').value = '';
+  document.getElementById('mVendorMobile').value = '';
+  document.getElementById('mVendorAddress').value = '';
+  document.getElementById('mVendorDeals').value = 'Deals in: Grocery, Mid Day Meal Rations, Fuel & General Goods';
+  document.getElementById('mVendorBank').value = '';
+  document.getElementById('mVendorAcc').value = '';
+  document.getElementById('mVendorIfsc').value = '';
+  document.getElementById('mVendorBranch').value = '';
+  document.getElementById('mVendorJurisdiction').value = 'Nawada';
+  document.getElementById('vendorModal').classList.add('show');
+}
+
+function openEditVendorModal() {
+  const v = vendors.find(x => x.id === currentVendorId);
+  if (!v) return;
+  activeEditVendorId = v.id;
+  document.getElementById('vendorModalTitle').textContent = '✏️ वेंडर विवरण संपादित करें (Edit Vendor)';
+  document.getElementById('mVendorName').value = v.name;
+  document.getElementById('mVendorGstin').value = v.gstin;
+  document.getElementById('mVendorMobile').value = v.mobile;
+  document.getElementById('mVendorAddress').value = v.address;
+  document.getElementById('mVendorDeals').value = v.deals;
+  document.getElementById('mVendorBank').value = v.bank;
+  document.getElementById('mVendorAcc').value = v.acc;
+  document.getElementById('mVendorIfsc').value = v.ifsc;
+  document.getElementById('mVendorBranch').value = v.branch;
+  document.getElementById('mVendorJurisdiction').value = v.jurisdiction || 'Nawada';
+  document.getElementById('vendorModal').classList.add('show');
+}
+
+function closeVendorModal() {
+  document.getElementById('vendorModal').classList.remove('show');
+}
+
+function saveVendorModal() {
+  const name = document.getElementById('mVendorName').value.trim();
+  const gstin = document.getElementById('mVendorGstin').value.trim();
+  const mobile = document.getElementById('mVendorMobile').value.trim();
+  const address = document.getElementById('mVendorAddress').value.trim();
+  const deals = document.getElementById('mVendorDeals').value.trim();
+  const bank = document.getElementById('mVendorBank').value.trim();
+  const acc = document.getElementById('mVendorAcc').value.trim();
+  const ifsc = document.getElementById('mVendorIfsc').value.trim();
+  const branch = document.getElementById('mVendorBranch').value.trim();
+  const jurisdiction = document.getElementById('mVendorJurisdiction').value.trim();
+
+  if (!name) {
+    alert('दुकानदार / फर्म का नाम अनिवार्य है!');
+    return;
+  }
+
+  if (activeEditVendorId) {
+    const v = vendors.find(x => x.id === activeEditVendorId);
+    v.name = name; v.gstin = gstin; v.mobile = mobile; v.address = address;
+    v.deals = deals; v.bank = bank; v.acc = acc; v.ifsc = ifsc;
+    v.branch = branch; v.jurisdiction = jurisdiction;
+  } else {
+    const newId = 'ven_' + Date.now();
+    vendors.push({ id: newId, name, gstin, mobile, address, deals, bank, acc, ifsc, branch, jurisdiction });
+    currentVendorId = newId;
+  }
+  localStorage.setItem('mdm_vendors', JSON.stringify(vendors));
+  populateVendorDropdown();
+  applyVendor(currentVendorId);
+  closeVendorModal();
+}
+
+function deleteCurrentVendor() {
+  if (vendors.length <= 1) {
+    alert('कम से कम एक वेंडर होना अनिवार्य है!');
+    return;
+  }
+  if (confirm(`क्या आप वेंडर "${vendors.find(x=>x.id===currentVendorId)?.name}" को हटाना चाहते हैं?`)) {
+    vendors = vendors.filter(x => x.id !== currentVendorId);
+    currentVendorId = vendors[0].id;
+    localStorage.setItem('mdm_vendors', JSON.stringify(vendors));
+    populateVendorDropdown();
+    applyVendor(currentVendorId);
+  }
+}
+
+// --- Data Export & Import (JSON) ---
+function exportDataJSON() {
+  const data = {
+    schools,
+    vendors,
+    currentSchoolId,
+    currentVendorId,
+    exportedAt: new Date().toISOString()
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `MDM_Portal_Backup_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+}
+
+function importDataJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.schools && Array.isArray(data.schools)) {
+        schools = data.schools;
+        localStorage.setItem('mdm_schools', JSON.stringify(schools));
+      }
+      if (data.vendors && Array.isArray(data.vendors)) {
+        vendors = data.vendors;
+        localStorage.setItem('mdm_vendors', JSON.stringify(vendors));
+      }
+      currentSchoolId = schools[0]?.id || 'sch_1';
+      currentVendorId = vendors[0]?.id || 'ven_1';
+      populateSchoolDropdown();
+      populateVendorDropdown();
+      applySchool(currentSchoolId);
+      applyVendor(currentVendorId);
+      alert('डेटा सफलतापूर्वक लोड हो गया!');
+    } catch(err) {
+      alert('अमान्य JSON फ़ाइल!');
+    }
+  };
+  reader.readAsText(file);
+}
+
+// Run on Load
+window.addEventListener('DOMContentLoaded', init);
 </script>
 
 </body>
