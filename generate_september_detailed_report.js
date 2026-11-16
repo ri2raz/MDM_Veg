@@ -749,3 +749,4 @@ function generateHTML() {
 const html = generateHTML();
 fs.writeFileSync('C:/Users/rajka/OneDrive/Desktop/general/September_2026_Detailed_MDM_Report.html', html, 'utf8');
 console.log('Successfully written September_2026_Detailed_MDM_Report.html');
+

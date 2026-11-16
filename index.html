@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDM Vouchers & Detailed Reports Portal - मध्य विद्यालय चण्डीनोवाँ</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 6mm 7mm 6mm 7mm;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Calibri', 'Nirmala UI', 'Mangal', Arial, sans-serif;
+    color: #000;
+    background-color: #f1f5f9;
+  }
+
+  /* Top Portal Navigation Banner */
+  .portal-nav {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 10px 24px;
+    border-bottom: 2px solid #2563eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .portal-brand {
+    display: flex;
+    flex-direction: column;
+  }
+  .portal-title {
+    font-size: 13pt;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #ffffff;
+  }
+  .portal-sub {
+    font-size: 8.5pt;
+    color: #94a3b8;
+  }
+  .nav-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .nav-btn {
+    text-decoration: none;
+    color: #e2e8f0;
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 8.5pt;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .nav-btn:hover {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
+  }
+  .nav-btn.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #60a5fa;
+  }
+  .nav-btn.badge-btn {
+    background: #047857;
+    border-color: #059669;
+    color: #fff;
+  }
+  .nav-btn.badge-btn:hover {
+    background: #059669;
+  }
+  
+  /* Top Interactive Toolbar */
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #1e293b;
+    color: #fff;
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .toolbar-title {
+    font-size: 13pt;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .badge {
+    background: #f59e0b;
+    color: #000;
+    font-size: 9.5pt;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 5px;
+    letter-spacing: 0.5px;
+  }
+  .btn-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: none;
+    padding: 7px 14px;
+    font-size: 9pt;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-primary {
+    background: #2563eb;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: #1d4ed8;
+  }
+  .btn-success {
+    background: #10b981;
+    color: #fff;
+  }
+  .btn-success:hover {
+    background: #059669;
+  }
+  .btn-outline {
+    background: #334155;
+    color: #f1f5f9;
+    border: 1px solid #475569;
+  }
+  .btn-outline:hover {
+    background: #475569;
+    color: #fff;
+  }
+
+  .page-wrapper {
+    padding: 20px 0 50px 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Voucher Paper Box */
+  .voucher-container {
+    background-color: #FFF085;
+    width: 200mm;
+    min-height: 285mm;
+    padding: 6mm 7mm;
+    border: 1.5px solid #000;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: background-color 0.3s;
+  }
+  .voucher-container.white-paper {
+    background-color: #ffffff !important;
+  }
+  
+  .top-table, .mid-table, .lower-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .top-table td, .mid-table td, .lower-table td {
+    vertical-align: top;
+    padding: 2px 4px;
+  }
+  
+  .store-title {
+    font-size: 15pt;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    margin: 2px 0;
+  }
+  
+  .store-details {
+    font-size: 8.5pt;
+    line-height: 1.35;
+  }
+  
+  .invoice-box-title {
+    font-size: 10pt;
+    font-weight: 900;
+    text-align: center;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+    letter-spacing: 0.3px;
+  }
+  
+  .mid-table {
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+  }
+  
+  .sub-header-title {
+    font-size: 8.5pt;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 2px;
+  }
+  
+  /* Items Table */
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .items-table th, .items-table td {
+    border: 1px solid #000;
+    padding: 2.2px 3px;
+    font-size: 8.2pt;
+    line-height: 1.15;
+  }
+  
+  .items-table th {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  
+  .col-sr { width: 4%; text-align: center; }
+  .col-desc { width: 33%; text-align: left; }
+  .col-hsn { width: 7%; text-align: center; }
+  .col-qty { width: 9%; text-align: right; }
+  .col-unit { width: 7%; text-align: center; }
+  .col-rate { width: 9%; text-align: right; }
+  .col-total { width: 12%; text-align: right; }
+  .col-taxable { width: 10%; text-align: right; }
+  .col-gst { width: 9%; text-align: center; }
+  
+  .cell-input {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1px 2px;
+    outline: none;
+    border-radius: 2px;
+  }
+  .cell-input:hover {
+    border-color: #cbd5e1;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .cell-input:focus {
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+  .text-center { text-align: center; }
+  .text-right { text-align: right; }
+  
+  .items-table tfoot td {
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+    padding: 3px 4px;
+  }
+  
+  .lower-table {
+    border-top: 1.5px solid #000;
+  }
+  .lower-table td {
+    vertical-align: top;
+    padding: 0;
+  }
+  
+  /* Tax Breakdown Table */
+  .tax-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .tax-table th, .tax-table td {
+    border: 1px solid #000;
+    padding: 2px 2px;
+    font-size: 7.5pt;
+    text-align: center;
+    line-height: 1.15;
+  }
+  .tax-table th {
+    font-weight: bold;
+  }
+  
+  .amount-words-box {
+    border-top: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+    padding: 4px 8px;
+    font-size: 8.5pt;
+    line-height: 1.35;
+  }
+  
+  .bank-details-box {
+    padding: 4px 8px;
+    font-size: 8.5pt;
+    line-height: 1.45;
+  }
+  
+  .terms-box {
+    padding: 5px 8px;
+    font-size: 8pt;
+    line-height: 1.35;
+  }
+  
+  .signature-box {
+    padding: 0 12px 8px 8px;
+    text-align: right;
+    font-size: 8.5pt;
+  }
+  
+  .footer-notice {
+    border-top: 1px solid #000;
+    text-align: center;
+    font-size: 8pt;
+    font-weight: bold;
+    padding: 3px 0;
+    line-height: 1.2;
+  }
+
+  @media print {
+    .portal-nav, .toolbar {
+      display: none !important;
+    }
+    body {
+      background: none !important;
+    }
+    .page-wrapper {
+      padding: 0 !important;
+    }
+    .voucher-container {
+      box-shadow: none !important;
+      border: 1.5px solid #000 !important;
+      width: 100% !important;
+    }
+    .cell-input {
+      border: none !important;
+      background: transparent !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Portal Navigation Banner -->
+<div class="portal-nav">
+  <div class="portal-brand">
+    <div class="portal-title">मध्य विद्यालय चण्डीनोवाँ (वारिसलीगंज, नवादा)</div>
+    <div class="portal-sub">UDISE: 10360400501 | PM POSHAN Mid-Day Meal (MDM) Billing &amp; Registers</div>
+  </div>
+  <div class="nav-links">
+    <a href="/" class="nav-btn active">✍️ Live Editor</a>
+    <a href="/September_2026_Detailed_MDM_Report.html" class="nav-btn">📊 Sept Report</a>
+    <a href="/Yellow_Vouchers_September_2026.html" class="nav-btn">🏷️ Sept Voucher</a>
+    <a href="/Yellow_Vouchers_October_2026.html" class="nav-btn">🏷️ Oct Voucher</a>
+    <a href="/Yellow_Voucher_4_Months.html" class="nav-btn">📑 5-Mo Grocery</a>
+    <a href="/Yellow_Voucher_Egg_Fruit_3_Months.html" class="nav-btn">🥚 4-Mo Egg/Fruit</a>
+    <a href="/September_2026_Detailed_MDM_Report.pdf" class="nav-btn badge-btn" download>⬇️ Sept Report PDF</a>
+    <a href="/Yellow_Vouchers_September_2026.pdf" class="nav-btn badge-btn" download>⬇️ Sept Voucher PDF</a>
+  </div>
+</div>
+
+<!-- Interactive Top Toolbar -->
+<div class="toolbar">
+  <div class="toolbar-title">
+    <span>MDM Tax Invoice Editor</span>
+    <span class="badge" id="badgeTotal">TOTAL: ₹33,385.00</span>
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-outline" onclick="loadMonthPreset('september')">📅 Load Sept (₹33,385)</button>
+    <button class="btn btn-outline" onclick="loadMonthPreset('october')">📅 Load Oct (₹29,096)</button>
+    <button class="btn btn-outline" onclick="loadMonthPreset('june')">📅 Load June (₹5,148)</button>
+    <button class="btn btn-outline" onclick="togglePaperColor()">🎨 Yellow / White</button>
+    <button class="btn btn-outline" onclick="clearAllData()">🔄 Reset</button>
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+  </div>
+</div>
+
+<div class="page-wrapper">
+  <div class="voucher-container" id="voucher">
+    <!-- Top Header -->
+    <table class="top-table">
+      <tr>
+        <td style="width: 55%; border-right: 1.5px solid #000;">
+          <div style="display: flex; justify-content: space-between; font-size: 8.5pt; font-weight: bold; margin-bottom: 2px;">
+            <span>GSTIN: 10BGLPK7944K2Z3</span>
+            <span>Mob.: 9973959953</span>
+          </div>
+          <div class="store-title">SANDEEP TRADERS</div>
+          <div class="store-details">
+            <strong>Main Road Kashichak (Nawada)</strong>, Bihar<br>
+            Deals in: Grocery, Mid Day Meal Rations, Fuel &amp; General Goods
+          </div>
+        </td>
+        <td style="width: 45%; padding-left: 9px;">
+          <div class="invoice-box-title">TAX INVOICE-CUM BILL OF SUPPLY</div>
+          <div class="invoice-meta">
+            <table style="width: 100%; border-collapse: collapse; font-size: 9pt;">
+              <tr>
+                <td>Invoice No. 2026-27 / </td>
+                <td style="text-align: right;"><input type="text" id="invNo" style="width: 80px; text-align: right; border: none; border-bottom: 1px dotted #555; background: transparent; font-weight: bold;" value=""></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: right; padding-top: 3px;">
+                  Dated: <input type="text" id="invDate" style="width: 130px; text-align: right; border: none; border-bottom: 1px dotted #555; background: transparent; font-weight: bold;" value="30 September 2026">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: right; padding-top: 2px;">State Code: 10 (Bihar)</td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align: right; padding-top: 2px;">Mode of Supply: Cash / Credit</td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Receiver & Scheme Box -->
+    <table class="mid-table">
+      <tr>
+        <td style="width: 55%; border-right: 1.5px solid #000;">
+          <div class="sub-header-title">DETAILS OF RECIPIENT (BILLED TO):</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 8.5pt;">
+            <tr>
+              <td style="font-weight: bold; font-size: 9.5pt;" colspan="2">मध्य विद्यालय चण्डीनोवाँ</td>
+            </tr>
+            <tr>
+              <td>प्रखंड: <strong>वारिसलीगंज</strong></td>
+              <td>जिला: <strong>नवादा (बिहार)</strong></td>
+            </tr>
+            <tr>
+              <td>UDISE Code: <strong>10360400501</strong></td>
+              <td>State Code: <strong>10 (Bihar)</strong></td>
+            </tr>
+          </table>
+        </td>
+        <td style="width: 45%; padding-left: 9px;">
+          <div class="sub-header-title">SCHEME / PROGRAMME DETAILS:</div>
+          <div style="font-size: 8.5pt; line-height: 1.4;">
+            <strong>PM POSHAN Scheme (Mid-Day Meal)</strong><br>
+            Purpose: <strong>Cooking Cost &amp; Fuel Material Purchase</strong><br>
+            Category: Primary &amp; Upper Primary (I - VIII)<br>
+            Payment Mode: Direct Bank Transfer / PFMS
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Items Table -->
+    <table class="items-table" id="itemsTable">
+      <thead>
+        <tr>
+          <th class="col-sr">Sl.</th>
+          <th class="col-desc">Description of Goods / Services</th>
+          <th class="col-hsn">HSN</th>
+          <th class="col-qty">Quantity</th>
+          <th class="col-unit">Unit</th>
+          <th class="col-rate">Rate (₹)</th>
+          <th class="col-total">Amount (₹)</th>
+          <th class="col-taxable">Taxable Val</th>
+          <th class="col-gst">GST Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-row="1">
+          <td class="col-sr">1</td>
+          <td class="col-desc">हल्दी पाउडर (Haldi Powder)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="4.036" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="250.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="2">
+          <td class="col-sr">2</td>
+          <td class="col-desc">धनिया पाउडर (Coriander Powder)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="2.421" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="175.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="3">
+          <td class="col-sr">3</td>
+          <td class="col-desc">मिक्स मसाला (Mix Masala)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="1.615" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="340.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="4">
+          <td class="col-sr">4</td>
+          <td class="col-desc">लाल मिर्च पाउडर (Red Chili Powder)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="0.807" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="300.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="5">
+          <td class="col-sr">5</td>
+          <td class="col-desc">सरसों तेल (Mustard Oil)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="23.981" oninput="calculateRow(this)"></td>
+          <td class="col-unit">Lit</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="190.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="6">
+          <td class="col-sr">6</td>
+          <td class="col-desc">सोया बड़ी (Soya Chunks)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="35.900" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="92.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="7">
+          <td class="col-sr">7</td>
+          <td class="col-desc">चना दाल (Chana Dal)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="15.130" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="100.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="8">
+          <td class="col-sr">8</td>
+          <td class="col-desc">मूंग दाल (Moong Dal)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="15.130" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="100.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="9">
+          <td class="col-sr">9</td>
+          <td class="col-desc">मसूर दाल (Masoor Dal)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="15.130" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="100.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="10">
+          <td class="col-sr">10</td>
+          <td class="col-desc">लाल चना (Red Chana)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="60.907" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="90.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="11">
+          <td class="col-sr">11</td>
+          <td class="col-desc">आलू (Potato)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="76.560" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="30.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="12">
+          <td class="col-sr">12</td>
+          <td class="col-desc">प्याज (Onion)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="18.269" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="39.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="13">
+          <td class="col-sr">13</td>
+          <td class="col-desc">कद्दू (Pumpkin)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="18.269" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="39.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="14">
+          <td class="col-sr">14</td>
+          <td class="col-desc">झिंगा / नेनुआ (Vegetables)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="18.268" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="39.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="15">
+          <td class="col-sr">15</td>
+          <td class="col-desc">टमाटर (Tomato)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="18.268" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="39.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="16">
+          <td class="col-sr">16</td>
+          <td class="col-desc">सूखी मिर्च (Dry Chilli)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="0.807" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="250.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="17">
+          <td class="col-sr">17</td>
+          <td class="col-desc">जीरा (Cumin)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="0.808" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="490.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="18">
+          <td class="col-sr">18</td>
+          <td class="col-desc">नमक (Salt)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="5.654" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="15.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+        <tr data-row="19">
+          <td class="col-sr">19</td>
+          <td class="col-desc">जलावन (Firewood / Fuel)</td>
+          <td class="col-hsn"><input type="text" class="cell-input text-center hsn" value=""></td>
+          <td class="col-qty"><input type="number" step="any" class="cell-input text-right qty" value="532.296" oninput="calculateRow(this)"></td>
+          <td class="col-unit">KG</td>
+          <td class="col-rate"><input type="number" step="any" class="cell-input text-right rate" value="14.00" oninput="calculateRow(this)"></td>
+          <td class="col-total"><input type="text" class="cell-input text-right total" readonly></td>
+          <td class="col-taxable"><input type="text" class="cell-input text-right taxable" value=""></td>
+          <td class="col-gst"><input type="text" class="cell-input text-right gst" value=""></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6" style="text-align: right; font-weight: bold; padding-right: 8px;">GRAND TOTAL / NET PAYABLE:</td>
+          <td class="col-total"><input type="text" id="grandTotal" class="cell-input text-right" style="font-weight: 900; font-size: 9.5pt;" readonly></td>
+          <td class="col-taxable"></td>
+          <td class="col-gst"></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- Lower Blocks -->
+    <table class="lower-table">
+      <tr>
+        <!-- Lower Left -->
+        <td style="width: 53%; border-right: 1.5px solid #000;">
+          <table class="tax-table">
+            <thead>
+              <tr>
+                <th>Tax Type</th>
+                <th>Rate</th>
+                <th>Taxable Amt</th>
+                <th>CGST (₹)</th>
+                <th>SGST (₹)</th>
+                <th>Total Tax</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GST / Exempt</td>
+                <td>0.00%</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr style="font-weight: bold;">
+                <td colspan="2">TOTAL TAX</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="amount-words-box">
+            <strong>Amount in Words:</strong><br>
+            <input type="text" id="amountWords" class="cell-input" style="font-weight: 600; font-size: 8.5pt;" value="">
+          </div>
+
+          <div class="bank-details-box">
+            <strong>Bank Details:</strong> Bank of Baroda | A/C: <strong>38240200000215</strong><br>
+            IFSC: <strong>BARB0WARISL</strong> | Branch: Warisaliganj, Nawada
+          </div>
+        </td>
+
+        <!-- Lower Right -->
+        <td style="width: 47%; padding: 4px 8px; vertical-align: top;">
+          <div class="terms-box">
+            <div style="font-weight: bold; font-size: 8pt; margin-bottom: 2px;">Terms &amp; Conditions:</div>
+            <div>1. Goods once sold will not be taken back.</div>
+            <div>2. All disputes are subject to Nawada jurisdiction.</div>
+            <div>3. Certified that particulars given above are true and correct.</div>
+          </div>
+
+          <div class="signature-box" style="margin-top: 18px;">
+            <div style="font-weight: bold; font-size: 8.5pt; text-align: right;">For SANDEEP TRADERS</div>
+            <div style="height: 48px;"></div>
+            <div style="text-align: right; font-weight: bold; font-size: 8.5pt; line-height: 1.25;">
+              Authorised Signatory<br>
+              <span style="font-size: 8pt; font-weight: normal;">Proprietor</span>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Bottom Notice -->
+    <div class="footer-notice">
+      This is a computer generated invoice and serves as official bill of supply for Mid-Day Meal records.
+    </div>
+  </div>
+</div>
+
+<script>
+  const presets = {
+    september: {
+      date: '30 September 2026',
+      totalBadge: 'TOTAL: ₹33,385.00',
+      items: [
+        { row: 1, qty: 4.036, rate: 250 },
+        { row: 2, qty: 2.421, rate: 175 },
+        { row: 3, qty: 1.615, rate: 340 },
+        { row: 4, qty: 0.807, rate: 300 },
+        { row: 5, qty: 23.981, rate: 190 },
+        { row: 6, qty: 35.900, rate: 92 },
+        { row: 7, qty: 15.130, rate: 100 },
+        { row: 8, qty: 15.130, rate: 100 },
+        { row: 9, qty: 15.130, rate: 100 },
+        { row: 10, qty: 60.907, rate: 90 },
+        { row: 11, qty: 76.560, rate: 30 },
+        { row: 12, qty: 18.269, rate: 39 },
+        { row: 13, qty: 18.269, rate: 39 },
+        { row: 14, qty: 18.268, rate: 39 },
+        { row: 15, qty: 18.268, rate: 39 },
+        { row: 16, qty: 0.807, rate: 250 },
+        { row: 17, qty: 0.808, rate: 490 },
+        { row: 18, qty: 5.654, rate: 15 },
+        { row: 19, qty: 532.296, rate: 14 }
+      ]
+    },
+    october: {
+      date: '31 October 2026',
+      totalBadge: 'TOTAL: ₹29,096.00',
+      items: [
+        { row: 1, qty: 3.533, rate: 250 },
+        { row: 2, qty: 2.120, rate: 175 },
+        { row: 3, qty: 1.413, rate: 340 },
+        { row: 4, qty: 0.706, rate: 300 },
+        { row: 5, qty: 20.759, rate: 190 },
+        { row: 6, qty: 21.125, rate: 92 },
+        { row: 7, qty: 14.490, rate: 100 },
+        { row: 8, qty: 14.490, rate: 100 },
+        { row: 9, qty: 14.490, rate: 100 },
+        { row: 10, qty: 57.821, rate: 90 },
+        { row: 11, qty: 60.873, rate: 30 },
+        { row: 12, qty: 18.760, rate: 39 },
+        { row: 13, qty: 18.760, rate: 39 },
+        { row: 14, qty: 18.760, rate: 39 },
+        { row: 15, qty: 18.759, rate: 39 },
+        { row: 16, qty: 0.706, rate: 250 },
+        { row: 17, qty: 0.707, rate: 490 },
+        { row: 18, qty: 4.943, rate: 15 },
+        { row: 19, qty: 454.409, rate: 14 }
+      ]
+    },
+    june: {
+      date: '30 June 2026',
+      totalBadge: 'TOTAL: ₹5,148.00',
+      items: [
+        { row: 1, qty: 0.596, rate: 249 },
+        { row: 2, qty: 0.357, rate: 190 },
+        { row: 3, qty: 0.238, rate: 340 },
+        { row: 4, qty: 0.119, rate: 300 },
+        { row: 5, qty: 3.750, rate: 191 },
+        { row: 6, qty: 5.000, rate: 92 },
+        { row: 7, qty: 2.453, rate: 100 },
+        { row: 8, qty: 2.453, rate: 100 },
+        { row: 9, qty: 2.454, rate: 100 },
+        { row: 10, qty: 7.507, rate: 90 },
+        { row: 11, qty: 9.000, rate: 30 },
+        { row: 12, qty: 4.137, rate: 39 },
+        { row: 13, qty: 4.137, rate: 39 },
+        { row: 14, qty: 4.137, rate: 39 },
+        { row: 15, qty: 4.137, rate: 39 },
+        { row: 16, qty: 0.119, rate: 250 },
+        { row: 17, qty: 0.119, rate: 485 },
+        { row: 18, qty: 0.834, rate: 15 },
+        { row: 19, qty: 86.620, rate: 14 }
+      ]
+    }
+  };
+
+  function loadMonthPreset(m) {
+    const p = presets[m];
+    if (!p) return;
+    document.getElementById('invDate').value = p.date;
+    p.items.forEach(it => {
+      const row = document.querySelector(`#itemsTable tr[data-row="${it.row}"]`);
+      if (row) {
+        row.querySelector('.qty').value = it.qty;
+        row.querySelector('.rate').value = it.rate.toFixed(2);
+        calculateRow(row.querySelector('.qty'));
+      }
+    });
+    calculateTotals();
+  }
+
+  function togglePaperColor() {
+    const v = document.getElementById('voucher');
+    v.classList.toggle('white-paper');
+  }
+
+  function calculateRow(elem) {
+    const row = elem.closest('tr');
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const rate = parseFloat(row.querySelector('.rate').value) || 0;
+    const totalElem = row.querySelector('.total');
+    
+    if (qty > 0 && rate > 0) {
+      const lineTotal = qty * rate;
+      totalElem.value = lineTotal.toFixed(2);
+    } else {
+      totalElem.value = '';
+    }
+    calculateTotals();
+  }
+
+  function calculateTotals() {
+    let grandTotal = 0;
+    const rows = document.querySelectorAll('#itemsTable tbody tr[data-row]');
+    rows.forEach(row => {
+      const tot = parseFloat(row.querySelector('.total').value) || 0;
+      grandTotal += tot;
+    });
+
+    if (grandTotal > 0) {
+      document.getElementById('grandTotal').value = grandTotal.toFixed(2);
+      document.getElementById('badgeTotal').textContent = 'TOTAL: ₹' + grandTotal.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('amountWords').value = 'INR ' + numberToWords(Math.round(grandTotal)) + ' ONLY';
+    } else {
+      document.getElementById('grandTotal').value = '';
+      document.getElementById('badgeTotal').textContent = 'TOTAL: ₹0.00';
+      document.getElementById('amountWords').value = '';
+    }
+  }
+
+  function clearAllData() {
+    if (confirm('Clear all entered quantities and reset amounts?')) {
+      document.querySelectorAll('#itemsTable tbody tr[data-row]').forEach(row => {
+        row.querySelector('.qty').value = '';
+        row.querySelector('.total').value = '';
+      });
+      document.getElementById('invNo').value = '';
+      calculateTotals();
+    }
+  }
+
+  function numberToWords(n) {
+    if (n === 0) return 'ZERO';
+    const a = ['', 'ONE ', 'TWO ', 'THREE ', 'FOUR ', 'FIVE ', 'SIX ', 'SEVEN ', 'EIGHT ', 'NINE ', 'TEN ', 'ELEVEN ', 'TWELVE ', 'THIRTEEN ', 'FOURTEEN ', 'FIFTEEN ', 'SIXTEEN ', 'SEVENTEEN ', 'EIGHTEEN ', 'NINETEEN '];
+    const b = ['', '', 'TWENTY', 'THIRTY', 'FORTY', 'FIFTY', 'SIXTY', 'SEVENTY', 'EIGHTY', 'NINETY'];
+    function inWords(num) {
+      if ((num = num.toString()).length > 9) return 'overflow';
+      const n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+      if (!n) return '';
+      let str = '';
+      str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'CRORE ' : '';
+      str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'LAKH ' : '';
+      str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'THOUSAND ' : '';
+      str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'HUNDRED ' : '';
+      str += (n[5] != 0) ? ((str != '') ? 'AND ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
+      return str.trim();
+    }
+    return inWords(n);
+  }
+
+  // Initial calculation on load
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#itemsTable tbody tr[data-row]').forEach(row => {
+      const qtyInput = row.querySelector('.qty');
+      if (qtyInput && qtyInput.value) {
+        calculateRow(qtyInput);
+      }
+    });
+    calculateTotals();
+  });
+</script>
+
+</body>
+</html>

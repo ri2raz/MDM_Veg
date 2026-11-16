@@ -470,3 +470,4 @@ ${page2}
 const fullHtml = generateHTML();
 fs.writeFileSync('C:/Users/rajka/OneDrive/Desktop/general/Yellow_Vouchers_September_2026.html', fullHtml);
 console.log('Successfully generated September 2-page voucher HTML!');
+
